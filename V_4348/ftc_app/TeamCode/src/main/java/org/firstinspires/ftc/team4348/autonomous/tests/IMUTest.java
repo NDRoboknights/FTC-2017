@@ -11,7 +11,7 @@ import org.firstinspires.ftc.team4348.robots.IMUBot;
  * Created by evynm on 10/4/2017.
  */
 
-@Autonomous(name="Test: IMUTest",group="Autonomous")
+@Autonomous(name="Test: IMUTest",group="Test")
 public class IMUTest extends CustomAutonomous
 {
     IMUBot bot = new IMUBot();

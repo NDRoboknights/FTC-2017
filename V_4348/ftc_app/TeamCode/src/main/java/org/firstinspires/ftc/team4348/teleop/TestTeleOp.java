@@ -5,13 +5,13 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.team4348.constants.HardwareName;
-import org.firstinspires.ftc.team4348.robots.TestBot;
+import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;
 
 /**
  * Created by evynm on 10/5/2017.
  */
 
-@TeleOp(name="Test: ClawTest", group="TeleOp")
+@TeleOp(name="Test: TestTeleOp", group="Test")
 public class TestTeleOp extends CustomTeleOp
 {
     DcMotor intake1;

@@ -9,7 +9,7 @@ import org.firstinspires.ftc.team4348.robots.IRBot;
  * Created by evynm on 10/9/2017.
  */
 
-@Autonomous(name="Test: IRTest",group="Autonomous")
+@Autonomous(name="Test: IRTest",group="Test")
 public class IRTest extends CustomAutonomous
 {
     IRBot bot = new IRBot();

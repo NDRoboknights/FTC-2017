@@ -17,6 +17,9 @@ public enum HardwareName
     UP_MOTOR_ONE("uMotor_0"),
     UP_MOTOR_TWO("uMotor_1"),
 
+    ARM_MOTOR("aMotor"),
+    CLAW_SERVO("cServo"),
+
     ADAFRUIT_IMU("imu"),
     COLOR_SENSOR("cSensor"),
     IR_SENSOR("irSensor");

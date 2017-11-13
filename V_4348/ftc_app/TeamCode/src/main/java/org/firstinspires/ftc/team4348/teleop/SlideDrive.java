@@ -10,7 +10,7 @@ import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;
 /**
  * Created by RoboKnight on 9/19/2017.
  */
-@TeleOp(name="TeleOp: SlideDrive", group = "TeleOp")
+@TeleOp(name="Slide: SlideDrive", group = "Slide")
 public class SlideDrive extends CustomTeleOp
 {
     SlideBot bot = new SlideBot();

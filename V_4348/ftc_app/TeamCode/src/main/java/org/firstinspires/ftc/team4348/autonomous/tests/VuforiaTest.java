@@ -21,7 +21,7 @@ import org.firstinspires.ftc.team4348.controllers.Vuforia;
  * Created by Evyn on 10/3/2017.
  */
 
-@Autonomous(name="Test: VuforiaTest",group="Autonomous")
+@Autonomous(name="Test: VuforiaTest",group="Test")
 public class VuforiaTest extends CustomAutonomous
 {
     Vuforia vuforia;
