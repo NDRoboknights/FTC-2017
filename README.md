@@ -1,7 +1,5 @@
 # FTC-2017
-ND RoboKnights FTC 2017 Code
-
-Please remember to work in your own branch before pushing.
+ND RoboKnights FIRST Tech Challenge 2017 Code
 
 **JV = Junior Varsity**<br>
 **V = Varsity**
