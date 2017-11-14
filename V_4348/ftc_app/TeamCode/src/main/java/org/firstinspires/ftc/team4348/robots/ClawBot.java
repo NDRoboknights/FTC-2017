@@ -22,5 +22,7 @@ public class ClawBot extends Bot
     {
         armMotor = hMap.dcMotor.get(HardwareName.ARM_MOTOR.name);
         clawServo = hMap.servo.get(HardwareName.CLAW_SERVO.name);
+
+        armMotor.setPower(0);
     }
 }
