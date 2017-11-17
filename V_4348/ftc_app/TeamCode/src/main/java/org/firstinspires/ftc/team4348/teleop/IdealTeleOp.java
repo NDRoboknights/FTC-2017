@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.team4348.teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.robotcore.internal.android.dx.cf.code.Machine;
 import org.firstinspires.ftc.team4348.robots.IdealBot;
 
@@ -7,6 +9,7 @@ import org.firstinspires.ftc.team4348.robots.IdealBot;
  * Created by RoboKnights on 11/13/2017.
  */
 
+@TeleOp(name="Real: Ideal",group="Real")
 public class IdealTeleOp extends CustomTeleOp
 {
     IdealBot bot = new IdealBot();

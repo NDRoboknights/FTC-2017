@@ -42,6 +42,13 @@ public abstract class CustomAutonomous extends LinearOpMode
         }
     }
 
+    public void setPowerT(double leftPower, double rightPower, long time)
+    {
+        setPower(leftPower, rightPower);
+        delay(time);
+        setPower(0,0);
+    }
+
     public double scalePower(double power)
     {
         if(Math.abs(power) > bot.MAX_SPEED) {

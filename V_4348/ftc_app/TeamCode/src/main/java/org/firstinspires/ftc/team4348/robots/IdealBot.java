@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IrSeekerSensor;
+import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.team4348.constants.HardwareName;
@@ -20,12 +21,15 @@ public class IdealBot extends Bot
     public DcMotor middleMotor;
 
     public ADAFruitIMU imu;
-    public ColorSensor cSensor;
+    public NormalizedColorSensor cSensor;
     public IrSeekerSensor irSensor;
 
     public DcMotor armMotor;
     public Servo clawServo;
-    final double CLAW_INIT_POS = 0.5;
+    public final double CLAW_INIT_POS = 0.5;
+
+    public Servo jewelServo;
+    public final double JEWEL_INIT_POS = 0.5;
 
     @Override
     public void init(HardwareMap hMap)
@@ -50,10 +54,11 @@ public class IdealBot extends Bot
 
         //servos
         clawServo = hMap.servo.get(HardwareName.CLAW_SERVO.name);
+        jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
 
         //sensors
         imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
-        cSensor = hMap.colorSensor.get(HardwareName.COLOR_SENSOR.name);
+        cSensor = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR.name);
         irSensor = hMap.irSeekerSensor.get(HardwareName.IR_SENSOR.name);
     }
 }

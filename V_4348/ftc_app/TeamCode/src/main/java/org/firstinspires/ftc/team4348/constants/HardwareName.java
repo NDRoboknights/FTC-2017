@@ -6,19 +6,20 @@ package org.firstinspires.ftc.team4348.constants;
 
 public enum HardwareName
 {
-    LEFT_MOTOR_ONE("lMotor_0"),
-    LEFT_MOTOR_TWO("lMotor_1"),
-    RIGHT_MOTOR_ONE("rMotor_0"),
-    RIGHT_MOTOR_TWO("rMotor_1"),
-    MIDDLE_MOTOR_ONE("mMotor_0"),
+    LEFT_MOTOR_ONE("lMotor0"),
+    LEFT_MOTOR_TWO("lMotor1"),
+    RIGHT_MOTOR_ONE("rMotor0"),
+    RIGHT_MOTOR_TWO("rMotor1"),
+    MIDDLE_MOTOR_ONE("mMotor0"),
 
-    INTAKE_MOTOR_ONE("iMotor_0"),
-    INTAKE_MOTOR_TWO("iMotor_1"),
-    UP_MOTOR_ONE("uMotor_0"),
-    UP_MOTOR_TWO("uMotor_1"),
+    INTAKE_MOTOR_ONE("iMotor0"),
+    INTAKE_MOTOR_TWO("iMotor1"),
+    UP_MOTOR_ONE("uMotor0"),
+    UP_MOTOR_TWO("uMotor1"),
 
     ARM_MOTOR("aMotor"),
     CLAW_SERVO("cServo"),
+    JEWEL_SERVO("jServo"),
 
     ADAFRUIT_IMU("imu"),
     COLOR_SENSOR("cSensor"),
