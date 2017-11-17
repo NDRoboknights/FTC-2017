@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.team4348.constants.Direction;
 import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.robots.Bot;
 
@@ -15,11 +16,14 @@ public abstract class CustomAutonomous extends LinearOpMode
 {
     Bot bot = null;
     private final Object monitor = new Object();
+    PIDController pidController = null;
 
     public void setBot(Bot bot)
     {
         this.bot = bot;
     }
+
+    public void setPidController(PIDController controller) {this.pidController = pidController;}
 
     public void delay(long millis)
     {
@@ -61,5 +65,52 @@ public abstract class CustomAutonomous extends LinearOpMode
         }
 
         return power;
+    }
+
+    public void straight(double power, long time)
+    {
+        pidController.setTarget(pidController.getValue());
+        long endTime = time + System.currentTimeMillis();
+        pidController.start();
+        while(System.currentTimeMillis() < endTime)
+        {
+            //find direction
+            double raw = pidController.getError();
+
+            double left = 1;
+            double right = 1;
+
+            if(raw > 0) {
+                right = -1;
+            }
+            else if(raw < 0) {
+                left = -1;
+            }
+
+            //set power
+            double lPower = power + left * Math.abs(pidController.getOutput());
+            double rPower = power + right * Math.abs(pidController.getOutput());
+
+            lPower = scalePower(lPower);
+            rPower = scalePower(rPower);
+
+            setPower(lPower, rPower);
+        }
+        setPower(0,0);
+        pidController.stop();
+    }
+
+    public void turn(Direction dir, double angle)
+    {
+        pidController.setTarget(angle);
+        pidController.start();
+        while(pidController.cycles < pidController.EXTRA_CYCLES)
+        {
+            double lPower = dir.v * Math.abs(pidController.getOutput());
+            double rPower = -dir.v * Math.abs(pidController.getOutput());
+            setPower(lPower, rPower);
+        }
+        setPower(0,0);
+        pidController.stop();
     }
 }

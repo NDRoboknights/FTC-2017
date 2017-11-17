@@ -22,6 +22,7 @@ public class PIDController
     public double target;
     public double output;
     public final int EXTRA_CYCLES = 100;
+    public int cycles = 0;
 
     public PIDController(ADAFruitIMU imu, double p, double i, double d)
     {
@@ -85,30 +86,30 @@ public class PIDController
         @Override
         public void run()
         {
-            int counter = 0;
-            double currErr;
-            double totErr = 0;
-            long prevTime = System.nanoTime();
-            long dTime;
+            cycles = 0; //cycle counter
+            double currErr; //current error
+            double totErr = 0; //total error
+            double prevTime = System.nanoTime() * 10E-9; //starting time
+            double dTime; //change in time
 
             do {
                 currErr = Math.abs(getError());
 
-                if(currErr < ACC_ERR) {
-                    counter++;
+                if(currErr < ACC_ERR) { //if current errror < acceptable error
+                    cycles++; //add counter for extra cycles
                 }
 
                 totErr += currErr;
-                dTime = System.nanoTime() - prevTime;
+                dTime = (System.nanoTime() - prevTime) * 10E-9; //convert from nanosec -> sec
 
-                double p = currErr * pidc.p;
-                double i = (totErr * pidc.i * 10E-9 * dTime);
-                double d = (currErr * pidc.d) / (10E-9 * dTime);
+                double p = pidc.p * currErr;
+                double i = pidc.i * (totErr * dTime);
+                double d = (pidc.d * currErr) / dTime;
 
                 output = p + i + d;
 
                 prevTime += dTime;
-            }while(isRunning && counter < EXTRA_CYCLES);
+            }while(isRunning);
         }
     }
 }

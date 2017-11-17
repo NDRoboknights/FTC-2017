@@ -31,18 +31,4 @@ public class PIDTest extends CustomAutonomous
         wait(250);
         turn(Direction.RIGHT, 90);
     }
-
-    public void turn(Direction dir, double angle)
-    {
-        pidController.setTarget(angle);
-        pidController.start();
-        while(pidController.PIDThread.isAlive())
-        {
-            double lPower = dir.v * Math.abs(pidController.getOutput());
-            double rPower = -dir.v * Math.abs(pidController.getOutput());
-            setPower(lPower, rPower);
-        }
-        setPower(0,0);
-        pidController.stop();
-    }
 }
