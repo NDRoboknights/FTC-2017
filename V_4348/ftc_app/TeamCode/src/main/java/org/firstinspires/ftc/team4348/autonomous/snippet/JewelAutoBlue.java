@@ -50,10 +50,11 @@ public class JewelAutoBlue extends CustomAutonomous
 
         if (dir != null) { //make sure we had a reading
             setPowerT(-dir.v * AUTO_SPEED, -dir.v * AUTO_SPEED, 200);
+            delay(50);
         }
 
-        //drive toward center to not hit anything
-        driveMMotor(Direction.RIGHT.v * AUTO_SPEED, 150);
+        //retract arm
+        bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
     }
 
     private void driveMMotor(double power, long time)

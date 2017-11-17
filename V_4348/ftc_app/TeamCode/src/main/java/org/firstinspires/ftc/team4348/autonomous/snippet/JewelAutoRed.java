@@ -53,8 +53,8 @@ public class JewelAutoRed extends CustomAutonomous
             setPowerT(-dir.v * AUTO_SPEED, -dir.v * AUTO_SPEED, 200);
         }
 
-        //drive toward center to not hit anything
-        driveMMotor(Direction.LEFT.v * AUTO_SPEED, 150);
+        //retract arm
+        bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
     }
 
     private void driveMMotor(double power, long time)
