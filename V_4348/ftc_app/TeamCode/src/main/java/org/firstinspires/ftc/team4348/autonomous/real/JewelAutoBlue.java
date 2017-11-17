@@ -12,7 +12,7 @@ import org.firstinspires.ftc.team4348.robots.IdealBot;
  */
 
 @Autonomous(name="Red,Snippet: Jewel",group="Red,Snippet")
-public class JewelAuto extends CustomAutonomous
+public class JewelAutoBlue extends CustomAutonomous
 {
     IdealBot bot = new IdealBot();
     final double AUTO_SPEED = 0.75;
@@ -38,9 +38,9 @@ public class JewelAuto extends CustomAutonomous
         Direction dir = null;
 
         //RGBA.red returns [0,1)
-        if (RGBA.red >= 0.5) { //if above half threshold, choose that direction
+        if (RGBA.blue >= 0.5) { //if above half threshold, choose that direction
             dir = Direction.RIGHT; //right for forward
-        } else if (RGBA.blue >= 0.5) { //not an else statement to make sure we have a reading
+        } else if (RGBA.red >= 0.5) { //not an else statement to make sure we have a reading
             dir = Direction.LEFT; //left for backward
         }
 
@@ -49,7 +49,7 @@ public class JewelAuto extends CustomAutonomous
         }
 
         //drive toward center to not hit anything
-        bot.middleMotor.setPower(Direction.LEFT.v * AUTO_SPEED); //reverse for blue side
+        bot.middleMotor.setPower(Direction.RIGHT.v * AUTO_SPEED); //reverse for red side
         delay(150);
         bot.middleMotor.setPower(0);
     }
