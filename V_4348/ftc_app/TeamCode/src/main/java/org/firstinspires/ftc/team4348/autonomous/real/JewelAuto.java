@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.constants.Direction;
-import org.firstinspires.ftc.team4348.constants.Team;
 import org.firstinspires.ftc.team4348.robots.IdealBot;
 
 /**
@@ -15,7 +14,6 @@ import org.firstinspires.ftc.team4348.robots.IdealBot;
 @Autonomous(name="Red,Snippet: Jewel",group="Red,Snippet")
 public class JewelAuto extends CustomAutonomous
 {
-    Team team = Team.RED;
     IdealBot bot = new IdealBot();
     final double AUTO_SPEED = 0.75;
     
