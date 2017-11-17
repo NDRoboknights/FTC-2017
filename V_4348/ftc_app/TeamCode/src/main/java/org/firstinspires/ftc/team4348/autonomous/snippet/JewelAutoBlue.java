@@ -24,7 +24,8 @@ public class JewelAutoBlue extends CustomAutonomous
 
         waitForStart();
 
-        //assumes: (1) bot is facing away from relic recovery on red, towards for blue...
+        //ASSUMES:
+        //(1) bot is facing away from relic recovery on red, towards for blue...
         //(2) color sensor is facing same way as robot...
         //(3) color sensor is on the end of the jewel servo...
         //(4) jewel servo is on right side of robot
@@ -52,9 +53,7 @@ public class JewelAutoBlue extends CustomAutonomous
         }
 
         //drive toward center to not hit anything
-        bot.middleMotor.setPower(Direction.RIGHT.v * AUTO_SPEED); //reverse for blue side
-        delay(150);
-        bot.middleMotor.setPower(0);
+        driveMMotor(Direction.RIGHT.v * AUTO_SPEED, 150);
     }
 
     private void driveMMotor(double power, long time)
