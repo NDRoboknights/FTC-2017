@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.constants.Direction;
-import org.firstinspires.ftc.team4348.robots.IdealBot;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 
 /**
@@ -39,7 +38,7 @@ public class JewelAutoRed extends CustomAutonomous
         delay(50);
 
         //read color sensor
-        NormalizedRGBA RGBA = bot.cSensor.getNormalizedColors();
+        NormalizedRGBA RGBA = bot.cSensor1.getNormalizedColors();
 
         Direction dir = null;
         //RGBA.red returns [0,1)

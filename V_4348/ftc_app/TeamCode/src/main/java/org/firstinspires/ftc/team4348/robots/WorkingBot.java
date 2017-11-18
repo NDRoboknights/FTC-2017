@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.team4348.robots;
 
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.IrSeekerSensor;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -21,10 +20,14 @@ public class WorkingBot extends Bot
     public DcMotor middleMotor;
 
     public ADAFruitIMU imu;
-    public NormalizedColorSensor cSensor;
+    public NormalizedColorSensor cSensor1;
+    public NormalizedColorSensor cSensor2;
 
     public Servo jewelServo;
     public final double JEWEL_INIT_POS = 0.5;
+
+    public DcMotor intakeMotor1;
+    public DcMotor intakeMotor2;
 
     @Override
     public void init(HardwareMap hMap)
@@ -43,11 +46,18 @@ public class WorkingBot extends Bot
         rightMotors.add(rightMotor);
         otherMotors.add(middleMotor);
 
+        //other motors
+        intakeMotor1 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_ONE.name);
+        intakeMotor2 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_TWO.name);
+
+        intakeMotor2.setDirection(DcMotor.Direction.REVERSE);
+
         //servos
         jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
 
         //sensors
         imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
-        cSensor = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR.name);
+        cSensor1 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR1.name);
+        cSensor2 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR2.name);
     }
 }

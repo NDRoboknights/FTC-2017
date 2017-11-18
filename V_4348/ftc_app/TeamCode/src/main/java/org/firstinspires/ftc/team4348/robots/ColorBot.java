@@ -16,6 +16,6 @@ public class ColorBot extends Bot
     @Override
     public void init(HardwareMap hMap)
     {
-        cSensor = hMap.colorSensor.get(HardwareName.COLOR_SENSOR.name);
+        cSensor = hMap.colorSensor.get(HardwareName.COLOR_SENSOR1.name);
     }
 }

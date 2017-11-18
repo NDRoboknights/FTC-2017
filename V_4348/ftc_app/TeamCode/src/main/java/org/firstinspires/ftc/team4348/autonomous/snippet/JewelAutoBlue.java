@@ -38,7 +38,7 @@ public class JewelAutoBlue extends CustomAutonomous
         delay(50);
 
         //read color sensor
-        NormalizedRGBA RGBA = bot.cSensor.getNormalizedColors();
+        NormalizedRGBA RGBA = bot.cSensor1.getNormalizedColors();
 
         Direction dir = null;
         //RGBA.red returns [0,1)

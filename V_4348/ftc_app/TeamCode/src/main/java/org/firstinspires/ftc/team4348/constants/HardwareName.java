@@ -22,7 +22,8 @@ public enum HardwareName
     JEWEL_SERVO("jServo"),
 
     ADAFRUIT_IMU("imu"),
-    COLOR_SENSOR("cSensor"),
+    COLOR_SENSOR1("cSensor1"),
+    COLOR_SENSOR2("cSensor2"),
     IR_SENSOR("irSensor");
 
     public String name;

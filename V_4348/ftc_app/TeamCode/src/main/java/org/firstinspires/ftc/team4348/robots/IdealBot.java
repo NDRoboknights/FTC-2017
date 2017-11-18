@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.team4348.robots;
 
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IrSeekerSensor;
@@ -58,7 +57,7 @@ public class IdealBot extends Bot
 
         //sensors
         imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
-        cSensor = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR.name);
+        cSensor = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR1.name);
         irSensor = hMap.irSeekerSensor.get(HardwareName.IR_SENSOR.name);
     }
 }
