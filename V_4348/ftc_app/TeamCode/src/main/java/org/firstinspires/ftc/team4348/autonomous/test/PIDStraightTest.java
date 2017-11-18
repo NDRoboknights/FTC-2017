@@ -26,6 +26,6 @@ public class PIDStraightTest extends CustomAutonomous
         waitForStart();
 
         //DO STUFF
-        straight(bot.MAX_SPEED, 3000);
+        straight(bot.MAX_SPEED, new TimeChecker(3000));
     }
 }

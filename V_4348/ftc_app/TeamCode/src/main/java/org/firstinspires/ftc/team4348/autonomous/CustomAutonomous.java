@@ -2,11 +2,11 @@ package org.firstinspires.ftc.team4348.autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.team4348.constants.Direction;
 import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.robots.Bot;
+import org.firstinspires.ftc.team4348.utils.StatusChecker;
 
 /**
  * Created by evynm on 10/3/2017.
@@ -65,12 +65,11 @@ public abstract class CustomAutonomous extends LinearOpMode
         return power;
     }
 
-    public void straight(double power, long time)
+    public void straight(double power, StatusChecker statusChecker)
     {
         pidController.setTarget(pidController.getValue());
-        long endTime = time + System.currentTimeMillis();
         pidController.start();
-        while(System.currentTimeMillis() < endTime)
+        while(statusChecker.checkStatus())
         {
             //find direction
             double raw = pidController.getError();
@@ -98,11 +97,11 @@ public abstract class CustomAutonomous extends LinearOpMode
         pidController.stop();
     }
 
-    public void turn(Direction dir, double angle)
+    public void turn(Direction dir, double angle, StatusChecker sChecker)
     {
         pidController.setTarget(angle);
         pidController.start();
-        while(pidController.cycles < pidController.EXTRA_CYCLES)
+        while(sChecker.checkStatus())
         {
             double lPower = dir.v * Math.abs(pidController.getOutput());
             double rPower = -dir.v * Math.abs(pidController.getOutput());
@@ -110,5 +109,71 @@ public abstract class CustomAutonomous extends LinearOpMode
         }
         setPower(0,0);
         pidController.stop();
+    }
+
+    public class PIDStraightThread
+    {
+        public Thread thread;
+        boolean isRunning = false;
+        double power;
+
+        public PIDStraightThread(double power)
+        {
+            thread = new Thread(new PIDStraightRunnable());
+            this.power = power;
+        }
+
+        class PIDStraightRunnable implements Runnable
+        {
+            RunningChecker rChecker = new RunningChecker();
+            @Override
+            public void run() {
+                straight(power, rChecker);
+            }
+        }
+
+        public void setRunning(boolean nValue)
+        {
+            isRunning = nValue;
+        }
+
+        class RunningChecker extends StatusChecker
+        {
+            @Override
+            public boolean checkStatus() {
+                return isRunning;
+            }
+        }
+    }
+
+    public class TimeChecker extends StatusChecker
+    {
+        long endTime;
+        public TimeChecker(long time)
+        {
+            this.endTime = System.currentTimeMillis() + time;
+        }
+
+        @Override
+        public boolean checkStatus() {
+            return System.currentTimeMillis() < endTime;
+        }
+    }
+
+    public class CycleChecker extends StatusChecker
+    {
+        PIDController controller;
+        int extraCycles;
+
+        public CycleChecker(PIDController pController, int extraCycles)
+        {
+            this.controller = pController;
+            this.extraCycles = extraCycles;
+        }
+
+        @Override
+        public boolean checkStatus() {
+            return pidController.cycles < extraCycles;
+        }
     }
 }

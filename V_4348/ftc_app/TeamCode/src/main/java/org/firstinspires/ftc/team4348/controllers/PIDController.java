@@ -6,6 +6,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 
 /**
  * Created by Evyn on 10/3/2017.
@@ -21,8 +22,8 @@ public class PIDController
     boolean isRunning = false;
     public double target;
     public double output;
-    public final int EXTRA_CYCLES = 100;
     public int cycles = 0;
+    public final int D_EXTRACYCLES = 100;
 
     public PIDController(ADAFruitIMU imu, double p, double i, double d)
     {

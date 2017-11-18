@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.team4348.autonomous.snippet;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.vuforia.VuMarkTarget;
 import com.vuforia.VuMarkTargetResult;
@@ -30,9 +31,12 @@ public class BoxAutoRed extends CustomAutonomous
 
         //Assume:
         //(1) bot is facing the cipher box and near it to the right
+        PIDStraightThread sThread = new PIDStraightThread(0);
+        sThread.thread.start();
+
         bot.middleMotor.setPower(Direction.LEFT.v * AUTO_SPEED);
 
-        RelicRecoveryVuMark vumark = RelicRecoveryVuMark.LEFT; //assume left for testing purposes
+        RelicRecoveryVuMark vumark = RelicRecoveryVuMark.LEFT; //assume for testing purposes
 
         //get the target of how many columns to scan
         int target;
@@ -65,16 +69,19 @@ public class BoxAutoRed extends CustomAutonomous
         }
         bot.middleMotor.setPower(0);
 
+        sThread.setRunning(false);
+        sThread.thread.join();
+
+        //drive forward
+        straight(AUTO_SPEED, new TimeChecker(100));
+
         delay(50);
         //place the block
         runIntake(-1, 1000);
-    }
 
-    private void driveMMotor(double power, long time)
-    {
-        bot.middleMotor.setPower(power);
-        delay(time);
-        bot.middleMotor.setPower(0);
+        delay(50);
+        //back up
+        setPowerT(-AUTO_SPEED, -AUTO_SPEED, 100);
     }
 
     private void runIntake(double power, long time)

@@ -26,9 +26,11 @@ public class PIDTest extends CustomAutonomous
 
         waitForStart();
 
+        CycleChecker cChecker = new CycleChecker(pidController, 100);
+
         //DO STUFF
-        turn(Direction.LEFT, 90);
+        turn(Direction.LEFT, 90, cChecker);
         wait(250);
-        turn(Direction.RIGHT, 90);
+        turn(Direction.RIGHT, 90, cChecker);
     }
 }

@@ -29,6 +29,7 @@ public class PIDCalibration extends CustomAutonomous
         double i = 0.000;
         double d = 0.000;
         pidController = new PIDController(bot.imu, 0.001, 0, 0);
+        CycleChecker cChecker = new CycleChecker(pidController, pidController.D_EXTRACYCLES);
 
         waitForStart();
 
@@ -40,7 +41,7 @@ public class PIDCalibration extends CustomAutonomous
             boolean a = gamepad1.a, x = gamepad1.x, b = gamepad1.b, y = gamepad1.y;
 
             if(a && !prevA) {
-                turn(Direction.LEFT, 90);
+                turn(Direction.LEFT, 90, cChecker);
             }
 
             if(x && Math.abs(leftStick) > THRESHOLD)
@@ -83,19 +84,5 @@ public class PIDCalibration extends CustomAutonomous
 
             telemetry.update();
         }
-    }
-
-    public void turn(Direction dir, double angle)
-    {
-        pidController.setTarget(angle);
-        pidController.start();
-        while(pidController.PIDThread.isAlive())
-        {
-            double lPower = -dir.v * Math.abs(pidController.getOutput());
-            double rPower = dir.v * Math.abs(pidController.getOutput());
-            setPower(lPower, rPower);
-        }
-        setPower(0,0);
-        pidController.stop();
     }
 }
