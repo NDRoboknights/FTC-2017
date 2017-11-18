@@ -29,7 +29,9 @@ public class PIDCalibration extends CustomAutonomous
         double i = 0.000;
         double d = 0.000;
         pidController = new PIDController(bot.imu, 0.001, 0, 0);
-        CycleChecker cChecker = new CycleChecker(pidController, pidController.D_EXTRACYCLES);
+        setPidController(pidController);
+
+        CycleChecker cChecker = new CycleChecker(pidController.D_EXTRACYCLES);
 
         waitForStart();
 

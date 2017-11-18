@@ -172,12 +172,10 @@ public abstract class CustomAutonomous extends LinearOpMode
 
     public class CycleChecker extends StatusChecker
     {
-        PIDController controller;
         int extraCycles;
 
-        public CycleChecker(PIDController pController, int extraCycles)
+        public CycleChecker(int extraCycles)
         {
-            this.controller = pController;
             this.extraCycles = extraCycles;
         }
 

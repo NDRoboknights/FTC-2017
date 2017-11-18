@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.constants.Direction;
+import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 
 /**
@@ -21,6 +22,7 @@ public class JewelAutoBlue extends CustomAutonomous
     public void runOpMode() throws InterruptedException {
         bot.init(hardwareMap);
         bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
+        setPidController(new PIDController(bot.imu, bot.PIDC.p, bot.PIDC.i, bot.PIDC.d));
 
         waitForStart();
 
@@ -49,7 +51,7 @@ public class JewelAutoBlue extends CustomAutonomous
         }
 
         if (dir != null) { //make sure we had a reading
-            setPowerT(-dir.v * AUTO_SPEED, -dir.v * AUTO_SPEED, 200);
+            straight(-dir.v * AUTO_SPEED, new TimeChecker(200));
             delay(50);
         }
 

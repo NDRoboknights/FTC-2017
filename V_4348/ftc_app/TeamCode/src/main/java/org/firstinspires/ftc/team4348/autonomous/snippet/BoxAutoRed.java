@@ -10,6 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.constants.Direction;
+import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 
 /**
@@ -26,6 +27,7 @@ public class BoxAutoRed extends CustomAutonomous
     {
         bot.init(hardwareMap);
         bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
+        setPidController(new PIDController(bot.imu, bot.PIDC.p, bot.PIDC.i, bot.PIDC.d));
 
         waitForStart();
 

@@ -12,6 +12,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
+import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.controllers.Vuforia;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 
@@ -33,6 +34,7 @@ public class VuforiaAuto extends CustomAutonomous
     {
         bot.init(hardwareMap);
         bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
+        setPidController(new PIDController(bot.imu, bot.PIDC.p, bot.PIDC.i, bot.PIDC.d));
 
         vuforia = new Vuforia(hardwareMap);
 
@@ -49,7 +51,9 @@ public class VuforiaAuto extends CustomAutonomous
         //(1) bot is facing away from relic recovery on red, towards for blue...
         //(2) phone is mounted to the right of the robot
 
-        setPower(AUTO_SPEED, AUTO_SPEED); //drive forward until in line with VuMark
+        //drive forward until in line with VuMark
+        PIDStraightThread sThread = new PIDStraightThread(AUTO_SPEED);
+        sThread.thread.start();
 
         //drive forward until pose is determinable (in range of VuMark)
         OpenGLMatrix pose;
@@ -66,6 +70,8 @@ public class VuforiaAuto extends CustomAutonomous
             rX = rot.firstAngle;
         }while(Math.abs(rX) > 0 + ACC_ERROR);
 
+        sThread.setRunning(false);
+        sThread.thread.join();
         setPower(0, 0);
 
         //finally, get the VuMark

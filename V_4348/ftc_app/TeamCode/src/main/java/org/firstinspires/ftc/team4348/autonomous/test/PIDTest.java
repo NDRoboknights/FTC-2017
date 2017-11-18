@@ -23,10 +23,11 @@ public class PIDTest extends CustomAutonomous
         setBot(bot);
         bot.init(hardwareMap);
         pidController = new PIDController(bot.imu, bot.pidc.p, bot.pidc.i, bot.pidc.d);
+        setPidController(pidController);
 
         waitForStart();
 
-        CycleChecker cChecker = new CycleChecker(pidController, 100);
+        CycleChecker cChecker = new CycleChecker(100);
 
         //DO STUFF
         turn(Direction.LEFT, 90, cChecker);

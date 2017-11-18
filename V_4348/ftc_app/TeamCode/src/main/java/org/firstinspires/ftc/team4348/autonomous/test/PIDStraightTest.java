@@ -22,6 +22,7 @@ public class PIDStraightTest extends CustomAutonomous
         setBot(bot);
         bot.init(hardwareMap);
         pidController = new PIDController(bot.imu, bot.pidc.p, bot.pidc.i, bot.pidc.d);
+        setPidController(pidController);
 
         waitForStart();
 

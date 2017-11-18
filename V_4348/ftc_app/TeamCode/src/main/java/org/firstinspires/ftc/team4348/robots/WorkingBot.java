@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
+import com.qualcomm.robotcore.hardware.PIDCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.team4348.constants.HardwareName;
@@ -28,6 +29,8 @@ public class WorkingBot extends Bot
 
     public DcMotor intakeMotor1;
     public DcMotor intakeMotor2;
+
+    public final PIDCoefficients PIDC = new PIDCoefficients(0.001, 0.001, 0.001);
 
     @Override
     public void init(HardwareMap hMap)
