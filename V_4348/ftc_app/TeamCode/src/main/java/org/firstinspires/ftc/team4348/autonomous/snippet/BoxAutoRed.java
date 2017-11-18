@@ -17,6 +17,7 @@ import org.firstinspires.ftc.team4348.robots.WorkingBot;
  * Created by RoboKnights on 11/17/2017.
  */
 
+@Autonomous(name="Red,Snippet: Box",group="Red,Snippet")
 public class BoxAutoRed extends CustomAutonomous
 {
     WorkingBot bot = new WorkingBot();
