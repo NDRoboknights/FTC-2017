@@ -30,11 +30,8 @@ public class JewelAutoRed extends CustomAutonomous
         //(1) bot is facing away from relic recovery on red, towards for blue...
         //(2) color sensor is facing same way as robot...
         //(3) color sensor is on the end of the jewel servo...
-        //(4) jewel servo is on right side of robot
-
-        //drive to jewels
-        driveMMotor(Direction.RIGHT.v * AUTO_SPEED, 150);
-
+        //(4) jewel servo is on left side of robot
+        
         //drop jewel servo arm
         bot.jewelServo.setPosition(0.0);
         delay(50);
