@@ -53,16 +53,24 @@ public abstract class CustomAutonomous extends LinearOpMode
         setPower(0,0);
     }
 
-    public double scalePower(double power)
+    public double[] scalePower(double... doubles)
     {
-        if(power > bot.MAX_SPEED) {
-            power = bot.MAX_SPEED;
-        }
-        else if(power < bot.MAX_SPEED) {
-            power = -bot.MAX_SPEED;
+        //find max
+        double max = Math.abs(doubles[0]);
+        for(Double d : doubles)
+        {
+            if(Math.abs(d) > max) {
+                max = d;
+            }
         }
 
-        return power;
+        //scale everything to max
+        for(int x=0; x<doubles.length; x++)
+        {
+            doubles[x] /= max;
+        }
+
+        return doubles;
     }
 
     public void straight(double power, StatusChecker statusChecker)
@@ -88,10 +96,10 @@ public abstract class CustomAutonomous extends LinearOpMode
             double lPower = power + left * Math.abs(pidController.getOutput());
             double rPower = power + right * Math.abs(pidController.getOutput());
 
-            lPower = scalePower(lPower);
-            rPower = scalePower(rPower);
+            //scale to make sure not over 1.0 max
+            double[] powers = scalePower(lPower, rPower);
 
-            setPower(lPower, rPower);
+            setPower(powers[0], powers[1]);
         }
         setPower(0,0);
         pidController.stop();
@@ -105,7 +113,9 @@ public abstract class CustomAutonomous extends LinearOpMode
         {
             double lPower = dir.v * Math.abs(pidController.getOutput());
             double rPower = -dir.v * Math.abs(pidController.getOutput());
-            setPower(lPower, rPower);
+
+            double[] powers = scalePower(lPower, rPower);
+            setPower(powers[0], powers[1]);
         }
         setPower(0,0);
         pidController.stop();
