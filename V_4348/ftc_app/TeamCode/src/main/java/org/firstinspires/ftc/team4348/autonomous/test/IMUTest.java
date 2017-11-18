@@ -1,18 +1,17 @@
-package org.firstinspires.ftc.team4348.autonomous.tests;
+package org.firstinspires.ftc.team4348.autonomous.test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
-import org.firstinspires.ftc.team4348.constants.Direction;
 import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.robots.IMUBot;
 
 /**
- * Created by Evyn on 10/3/2017.
+ * Created by evynm on 10/4/2017.
  */
 
-@Autonomous(name="Test: PIDTest",group="Test")
-public class PIDTest extends CustomAutonomous
+@Autonomous(name="Test: IMUTest",group="Test")
+public class IMUTest extends CustomAutonomous
 {
     IMUBot bot = new IMUBot();
     PIDController pidController;
@@ -22,13 +21,15 @@ public class PIDTest extends CustomAutonomous
     {
         setBot(bot);
         bot.init(hardwareMap);
-        pidController = new PIDController(bot.imu, bot.pidc.p, bot.pidc.i, bot.pidc.d);
+        pidController = new PIDController(bot.imu, 0.001, 0, 0);
 
         waitForStart();
 
         //DO STUFF
-        turn(Direction.LEFT, 90);
-        wait(250);
-        turn(Direction.RIGHT, 90);
+        while(opModeIsActive())
+        {
+            telemetry.addData("IMU Angle:", bot.imu.getValue());
+            telemetry.update();
+        }
     }
 }

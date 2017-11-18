@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.team4348.teleop;
+package org.firstinspires.ftc.team4348.teleop.test;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.team4348.robots.ClawBot;
+import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;
 
 @TeleOp(name="Test: ClawTest", group = "Test")
 public class ClawTest extends CustomTeleOp

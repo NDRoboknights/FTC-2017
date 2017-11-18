@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.team4348.teleop;
+package org.firstinspires.ftc.team4348.teleop.full;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.internal.android.dx.cf.code.Machine;
 import org.firstinspires.ftc.team4348.robots.IdealBot;
+import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;
 
 /**
  * Created by RoboKnights on 11/13/2017.

@@ -55,13 +55,11 @@ public abstract class CustomAutonomous extends LinearOpMode
 
     public double scalePower(double power)
     {
-        if(Math.abs(power) > bot.MAX_SPEED) {
-            if(power < 0) {
-                power = -bot.MAX_SPEED;
-            }
-            else {
-                power = bot.MAX_SPEED;
-            }
+        if(power > bot.MAX_SPEED) {
+            power = bot.MAX_SPEED;
+        }
+        else if(power < bot.MAX_SPEED) {
+            power = -bot.MAX_SPEED;
         }
 
         return power;
