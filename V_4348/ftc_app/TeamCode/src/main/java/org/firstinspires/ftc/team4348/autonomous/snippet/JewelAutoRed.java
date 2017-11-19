@@ -22,7 +22,7 @@ public class JewelAutoRed extends CustomAutonomous
     public void runOpMode() throws InterruptedException {
         bot.init(hardwareMap);
         bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
-        setPidController(new PIDController(bot.imu, bot.PIDC.p, bot.PIDC.i, bot.PIDC.d));
+        //setPidController(new PIDController(bot.imu, bot.PIDC.p, bot.PIDC.i, bot.PIDC.d));
 
         waitForStart();
 
@@ -48,7 +48,7 @@ public class JewelAutoRed extends CustomAutonomous
         }
 
         if (dir != null) { //make sure we had a reading
-            straight(-dir.v * AUTO_SPEED, new TimeChecker(200));
+            setPowerT(-dir.v * AUTO_SPEED, -dir.v *AUTO_SPEED, 200);
             delay(50);
         }
 
