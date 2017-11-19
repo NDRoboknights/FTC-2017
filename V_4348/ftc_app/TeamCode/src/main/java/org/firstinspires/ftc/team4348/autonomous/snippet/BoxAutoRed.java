@@ -13,6 +13,8 @@ import org.firstinspires.ftc.team4348.constants.Direction;
 import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 
+import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
+
 /**
  * Created by RoboKnights on 11/17/2017.
  */
@@ -84,7 +86,7 @@ public class BoxAutoRed extends CustomAutonomous
 
         delay(50);
         //back up
-        setPowerT(-AUTO_SPEED, -AUTO_SPEED, 100);
+        straight(-AUTO_SPEED, new TimeChecker(100));
     }
 
     private void runIntake(double power, long time)

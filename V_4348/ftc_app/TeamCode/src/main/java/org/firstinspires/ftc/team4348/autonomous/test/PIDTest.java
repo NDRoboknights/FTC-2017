@@ -33,5 +33,7 @@ public class PIDTest extends CustomAutonomous
         turn(Direction.LEFT, 90, cChecker);
         wait(250);
         turn(Direction.RIGHT, 90, cChecker);
+        wait(250);
+        straight(bot.MAX_SPEED, new TimeChecker(1000));
     }
 }

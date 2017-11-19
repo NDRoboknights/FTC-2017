@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.team4348.robots;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IrSeekerSensor;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
+import com.qualcomm.robotcore.hardware.PIDCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.team4348.constants.HardwareName;
@@ -20,15 +22,19 @@ public class IdealBot extends Bot
     public DcMotor middleMotor;
 
     public ADAFruitIMU imu;
-    public NormalizedColorSensor cSensor;
-    public IrSeekerSensor irSensor;
-
-    public DcMotor armMotor;
-    public Servo clawServo;
-    public final double CLAW_INIT_POS = 0.5;
+    public NormalizedColorSensor cSensor1;
+    public NormalizedColorSensor cSensor2;
 
     public Servo jewelServo;
     public final double JEWEL_INIT_POS = 0.5;
+
+    public DcMotor intakeMotor1;
+    public DcMotor intakeMotor2;
+
+    public DcMotor upDownMotor1;
+    public DcMotor upDownMotor2;
+
+    public final PIDCoefficients PIDC = new PIDCoefficients(0.001, 0.001, 0.001);
 
     @Override
     public void init(HardwareMap hMap)
@@ -44,20 +50,39 @@ public class IdealBot extends Bot
         middleMotor.setPower(0);
 
         //other motors
-        armMotor = hMap.dcMotor.get(HardwareName.ARM_MOTOR.name);
-        armMotor.setPower(0);
+        intakeMotor1 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_ONE.name);
+        intakeMotor2 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_TWO.name);
+
+        upDownMotor1 = hMap.dcMotor.get(HardwareName.UP_MOTOR_ONE.name);
+        upDownMotor2 = hMap.dcMotor.get(HardwareName.UP_MOTOR_TWO.name);
+        upDownMotor2.setDirection(DcMotor.Direction.REVERSE);
 
         leftMotors.add(leftMotor);
         rightMotors.add(rightMotor);
         otherMotors.add(middleMotor);
+        otherMotors.add(intakeMotor1);
+        otherMotors.add(intakeMotor2);
+        otherMotors.add(upDownMotor1);
+        otherMotors.add(upDownMotor2);
 
         //servos
-        clawServo = hMap.servo.get(HardwareName.CLAW_SERVO.name);
         jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
 
         //sensors
         imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
-        cSensor = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR1.name);
-        irSensor = hMap.irSeekerSensor.get(HardwareName.IR_SENSOR.name);
+        cSensor1 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR1.name);
+        cSensor2 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR2.name);
+    }
+
+    public void runIntakeMotors(double power)
+    {
+        intakeMotor1.setPower(power);
+        intakeMotor2.setPower(power);
+    }
+
+    public void runUpMotors(double power)
+    {
+        upDownMotor1.setPower(power);
+        upDownMotor2.setPower(power);
     }
 }

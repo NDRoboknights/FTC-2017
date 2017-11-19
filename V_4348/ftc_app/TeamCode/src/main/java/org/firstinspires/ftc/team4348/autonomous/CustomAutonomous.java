@@ -8,6 +8,8 @@ import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.robots.Bot;
 import org.firstinspires.ftc.team4348.utils.StatusChecker;
 
+import static org.firstinspires.ftc.team4348.utils.Utilities.scalePower;
+
 /**
  * Created by evynm on 10/3/2017.
  */
@@ -24,54 +26,6 @@ public abstract class CustomAutonomous extends LinearOpMode
     }
 
     public void setPidController(PIDController controller) {this.pidController = pidController;}
-
-    public void delay(long millis)
-    {
-        try {
-            monitor.wait(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setPower(double leftPower, double rightPower)
-    {
-        for(DcMotor d : bot.leftMotors)
-        {
-            d.setPower(leftPower);
-        }
-        for(DcMotor d : bot.rightMotors)
-        {
-            d.setPower(rightPower);
-        }
-    }
-
-    public void setPowerT(double leftPower, double rightPower, long time)
-    {
-        setPower(leftPower, rightPower);
-        delay(time);
-        setPower(0,0);
-    }
-
-    public double[] scalePower(double... doubles)
-    {
-        //find max
-        double max = Math.abs(doubles[0]);
-        for(Double d : doubles)
-        {
-            if(Math.abs(d) > max) {
-                max = d;
-            }
-        }
-
-        //scale everything to max
-        for(int x=0; x<doubles.length; x++)
-        {
-            doubles[x] /= max;
-        }
-
-        return doubles;
-    }
 
     public void straight(double power, StatusChecker statusChecker)
     {
@@ -99,9 +53,9 @@ public abstract class CustomAutonomous extends LinearOpMode
             //scale to make sure not over 1.0 max
             double[] powers = scalePower(lPower, rPower);
 
-            setPower(powers[0], powers[1]);
+            bot.setDrivePower(powers[0], powers[1]);
         }
-        setPower(0,0);
+        bot.setDrivePower(0,0);
         pidController.stop();
     }
 
@@ -115,9 +69,9 @@ public abstract class CustomAutonomous extends LinearOpMode
             double rPower = -dir.v * Math.abs(pidController.getOutput());
 
             double[] powers = scalePower(lPower, rPower);
-            setPower(powers[0], powers[1]);
+            bot.setDrivePower(powers[0], powers[1]);
         }
-        setPower(0,0);
+        bot.setDrivePower(0,0);
         pidController.stop();
     }
 
