@@ -72,7 +72,7 @@ public class VuforiaAuto extends CustomAutonomous
 
         sThread.setRunning(false);
         sThread.thread.join();
-        setPower(0, 0);
+        bot.setDrivePower(0, 0);
 
         //finally, get the VuMark
         RelicRecoveryVuMark mark = RelicRecoveryVuMark.from(relicTemplate);
