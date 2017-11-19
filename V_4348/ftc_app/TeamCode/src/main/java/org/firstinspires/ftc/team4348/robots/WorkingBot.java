@@ -20,15 +20,15 @@ public class WorkingBot extends Bot
     public DcMotor rightMotor;
     public DcMotor middleMotor;
 
-    //public ADAFruitIMU imu;
+    public ADAFruitIMU imu;
     public NormalizedColorSensor cSensor1;
-    //public NormalizedColorSensor cSensor2;
+    public NormalizedColorSensor cSensor2;
 
     public Servo jewelServo;
     public final double JEWEL_INIT_POS = 0.5;
 
-//    public DcMotor intakeMotor1;
-//    public DcMotor intakeMotor2;
+    public DcMotor intakeMotor1;
+    public DcMotor intakeMotor2;
 
     public DcMotor intakeMotors;
     public DcMotor upDownMotors;
@@ -60,8 +60,8 @@ public class WorkingBot extends Bot
         jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
 
         //sensors
-        //imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
+        imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
         cSensor1 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR1.name);
-        //cSensor2 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR2.name);
+        cSensor2 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR2.name);
     }
 }
