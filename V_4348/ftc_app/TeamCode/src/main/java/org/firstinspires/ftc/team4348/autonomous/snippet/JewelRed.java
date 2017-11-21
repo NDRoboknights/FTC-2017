@@ -20,9 +20,8 @@ public class JewelRed
         //read color sensor and choose direction
         Direction dir = null;
 
-        while(dir == null) {
+        while(dir == null) { //make sure we had a reading
             //RGBA.red returns [0,255]
-
             //if above threshold, choose that direction
             if (bot.cSensor1.red() >= CustomAutonomous.COLOR_THRESHOLD) {
                 dir = Direction.BACKWARD;
@@ -31,12 +30,11 @@ public class JewelRed
             else if (bot.cSensor1.blue() >= CustomAutonomous.COLOR_THRESHOLD) {
                 dir = Direction.FORWARD;
             }
-
-            if (dir != null) { //make sure we had a reading
-                bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 200);
-                delay(50);
-            }
         }
+
+        bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 200);
+        delay(50);
+
         //retract arm
         bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
     }
