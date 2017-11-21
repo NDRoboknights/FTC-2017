@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.team4348.teleop.test;
+package org.firstinspires.ftc.team4348.teleop.full;
 
 import org.firstinspires.ftc.team4348.robots.TestBedBot;
 import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.team4348.sensortest;
+package org.firstinspires.ftc.team4348.partstest;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
