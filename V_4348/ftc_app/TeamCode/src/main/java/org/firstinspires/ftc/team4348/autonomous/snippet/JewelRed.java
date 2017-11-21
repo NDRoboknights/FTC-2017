@@ -16,6 +16,7 @@ public class JewelRed
     {
         //drop jewel servo arm
         bot.jewelServo.setPosition(0.0);
+        delay(200);
 
         //read color sensor and choose direction
         Direction dir = null;
