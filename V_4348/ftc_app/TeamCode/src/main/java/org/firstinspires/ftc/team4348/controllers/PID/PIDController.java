@@ -85,9 +85,9 @@ public class PIDController
 
             while(isRunning)
             {
-                currErr = Math.abs(getError());
+                currErr = getError();
 
-                if(currErr < ACC_ERR) { //if current errror < acceptable error
+                if(Math.abs(currErr) < ACC_ERR) { //if current errror < acceptable error
                     cycles++; //add counter for extra cycles
                 }
 
