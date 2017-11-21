@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.team4348.robots;
 
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -23,8 +24,8 @@ public class WorkingBot extends Bot
     public DcMotor middleMotor;
 
     public ADAFruitIMU imu;
-    public NormalizedColorSensor cSensor1;
-    public NormalizedColorSensor cSensor2;
+    public ColorSensor cSensor1;
+    public ColorSensor cSensor2;
 
     public Servo jewelServo;
     public final double JEWEL_INIT_POS = 0.5;
@@ -34,6 +35,8 @@ public class WorkingBot extends Bot
 
     public DcMotor upDownMotor1;
     public DcMotor upDownMotor2;
+
+    public final double AUTO_DRIVE_SPEED = 0.9;
 
     public final PIDCoefficients PIDC = new PIDCoefficients(0.001, 0.001, 0.001);
 
@@ -45,10 +48,6 @@ public class WorkingBot extends Bot
         rightMotor = hMap.dcMotor.get(HardwareName.RIGHT_MOTOR_ONE.name);
         middleMotor = hMap.dcMotor.get(HardwareName.MIDDLE_MOTOR_ONE.name);
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
-
-        leftMotor.setPower(0);
-        rightMotor.setPower(0);
-        middleMotor.setPower(0);
 
         //other motors
         intakeMotor1 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_ONE.name);
@@ -68,11 +67,15 @@ public class WorkingBot extends Bot
 
         //servos
         jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
+        jewelServo.setPosition(JEWEL_INIT_POS);
 
         //sensors
         imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
-        cSensor1 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR1.name);
-        cSensor2 = hMap.get(NormalizedColorSensor.class, HardwareName.COLOR_SENSOR2.name);
+
+        cSensor1 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR1.name);
+        cSensor2 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR2.name);
+        cSensor1.enableLed(true);
+        cSensor2.enableLed(true);
     }
 
     public void runIntakeMotors(double power)

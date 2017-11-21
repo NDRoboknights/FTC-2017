@@ -6,10 +6,21 @@ package org.firstinspires.ftc.team4348.utils;
 
 public class Utilities
 {
-    static final Object monitor = new Object();
+    public static void delay(StatusChecker sChecker)
+    {
+        Object monitor = new Object();
+        while(sChecker.checkStatus()) {
+            try {
+                monitor.wait(2);
+            } catch (InterruptedException ignored) {
+
+            }
+        }
+    }
 
     public static void delay(long time)
     {
+        Object monitor = new Object();
         try {
             monitor.wait(time);
         } catch (InterruptedException e) {

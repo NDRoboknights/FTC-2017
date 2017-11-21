@@ -16,6 +16,7 @@ import static org.firstinspires.ftc.team4348.utils.Utilities.scalePower;
 
 public abstract class CustomAutonomous extends LinearOpMode
 {
+    public static final int COLOR_THRESHOLD = 1;
     Bot bot = null;
     private final Object monitor = new Object();
     PIDController pidController = null;
