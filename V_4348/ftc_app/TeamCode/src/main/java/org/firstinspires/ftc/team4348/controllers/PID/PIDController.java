@@ -83,7 +83,8 @@ public class PIDController
             double prevTime = System.nanoTime() * 10E-9; //starting time
             double dTime; //change in time
 
-            do {
+            while(isRunning)
+            {
                 currErr = Math.abs(getError());
 
                 if(currErr < ACC_ERR) { //if current errror < acceptable error
@@ -91,16 +92,16 @@ public class PIDController
                 }
 
                 totErr += currErr;
-                dTime = (System.nanoTime() - prevTime) * 10E-9; //convert from nanosec -> sec
+                dTime = (System.nanoTime() * 10E-9) - prevTime; //convert from nanosec -> sec
 
                 double p = pidc.p * currErr;
-                double i = pidc.i * (totErr * dTime);
+                double i = pidc.i * totErr * dTime;
                 double d = (pidc.d * currErr) / dTime;
 
                 output = p + i + d;
 
                 prevTime += dTime;
-            }while(isRunning);
+            }
         }
     }
 }
