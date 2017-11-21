@@ -14,6 +14,7 @@ public class ServoTest extends CustomTeleOp
 {
     ServoBot bot = new ServoBot();
     double pos = bot.JEWEL_INIT_POS;
+    double oldPos = bot.JEWEL_INIT_POS;
 
     @Override
     public void init()
@@ -32,6 +33,16 @@ public class ServoTest extends CustomTeleOp
             else {
                 pos -= 0.01;
             }
+        }
+
+        if(gamepad1.a) {
+            bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
+            pos = bot.JEWEL_INIT_POS;
+            oldPos = pos;
+        }
+
+        if(gamepad1.b) {
+            bot.jewelServo.setPosition(oldPos);
         }
 
         bot.jewelServo.setPosition(pos);
