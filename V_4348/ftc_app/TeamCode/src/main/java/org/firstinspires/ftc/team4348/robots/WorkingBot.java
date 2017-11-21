@@ -37,12 +37,14 @@ public class WorkingBot extends Bot
     public DcMotor upDownMotor2;
 
     public final double AUTO_DRIVE_SPEED = 0.9;
+    public final double AUTO_MEDIUM_SPEED = 0.5;
 
     public final PIDCoefficients PIDC = new PIDCoefficients(0.001, 0.001, 0.001);
 
     @Override
     public void init(HardwareMap hMap)
     {
+        this.hardwareMap = hMap;
         //drive motors
         leftMotor = hMap.dcMotor.get(HardwareName.LEFT_MOTOR_ONE.name);
         rightMotor = hMap.dcMotor.get(HardwareName.RIGHT_MOTOR_ONE.name);

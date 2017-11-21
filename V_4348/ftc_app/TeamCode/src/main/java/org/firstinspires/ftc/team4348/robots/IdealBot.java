@@ -37,6 +37,7 @@ public class IdealBot extends Bot
     @Override
     public void init(HardwareMap hMap)
     {
+        this.hardwareMap = hMap;
         //drive motors
         leftMotor = hMap.dcMotor.get(HardwareName.LEFT_MOTOR_ONE.name);
         rightMotor = hMap.dcMotor.get(HardwareName.RIGHT_MOTOR_ONE.name);

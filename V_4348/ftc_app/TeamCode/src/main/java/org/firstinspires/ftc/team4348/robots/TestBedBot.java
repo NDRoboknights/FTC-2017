@@ -18,6 +18,7 @@ public class TestBedBot extends Bot
     @Override
     public void init(HardwareMap hMap)
     {
+        this.hardwareMap = hMap;
         leftMotor = hMap.dcMotor.get(HardwareName.LEFT_MOTOR_ONE.name);
         middleMotor = hMap.dcMotor.get(HardwareName.MIDDLE_MOTOR_ONE.name);
         rightMotor = hMap.dcMotor.get(HardwareName.RIGHT_MOTOR_ONE.name);
