@@ -20,15 +20,6 @@ public class JewelBlue
         //read color sensor and choose direction
         Direction dir = null;
 
-        //PENIS
-        //PENIS
-        {
-            /*
-
-            CODE
-             */
-        }
-
         while(dir == null) { //make sure we had a reading
             //RGBA.red returns [0,255]
             //if above threshold, choose that direction
