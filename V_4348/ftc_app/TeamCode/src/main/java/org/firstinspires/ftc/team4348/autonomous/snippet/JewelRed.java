@@ -33,7 +33,7 @@ public class JewelRed
         }
 
         if (dir != null) { //make sure we had a reading
-            bot.setDrivePowerT(-dir.v * bot.AUTO_DRIVE_SPEED, -dir.v * bot.AUTO_DRIVE_SPEED, 200);
+            bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 200);
             delay(50);
         }
 
