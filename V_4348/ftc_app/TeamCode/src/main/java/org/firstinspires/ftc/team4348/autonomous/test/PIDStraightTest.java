@@ -1,10 +1,13 @@
 package org.firstinspires.ftc.team4348.autonomous.test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 import org.firstinspires.ftc.team4348.robots.IMUBot;
+import org.firstinspires.ftc.team4348.utils.TimeChecker;
 
 /**
  * Created by Evyn on 10/3/2017.
@@ -19,14 +22,13 @@ public class PIDStraightTest extends CustomAutonomous
     @Override
     public void runOpMode() throws InterruptedException
     {
-        setBot(bot);
         bot.init(hardwareMap);
-        pidController = new PIDController(bot.imu, bot.pidc.p, bot.pidc.i, bot.pidc.d);
-        setPidController(pidController);
+        pidController = new PIDController(bot.imu, bot.pidc);
+        PIDFunctions pidFunctions = new PIDFunctions(bot, pidController);
 
         waitForStart();
 
         //DO STUFF
-        straight(bot.MAX_SPEED, new TimeChecker(3000));
+        pidFunctions.straight(bot.MAX_SPEED, new TimeChecker(3000));
     }
 }

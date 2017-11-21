@@ -5,7 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.constants.Direction;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 import org.firstinspires.ftc.team4348.robots.IMUBot;
+import org.firstinspires.ftc.team4348.utils.TimeChecker;
 
 /**
  * Created by Evyn on 10/3/2017.
@@ -20,20 +22,19 @@ public class PIDTest extends CustomAutonomous
     @Override
     public void runOpMode() throws InterruptedException
     {
-        setBot(bot);
         bot.init(hardwareMap);
-        pidController = new PIDController(bot.imu, bot.pidc.p, bot.pidc.i, bot.pidc.d);
-        setPidController(pidController);
+        pidController = new PIDController(bot.imu, bot.pidc);
+        PIDFunctions pidFunctions = new PIDFunctions(bot, pidController);
 
         waitForStart();
 
-        CycleChecker cChecker = new CycleChecker(100);
+        PIDFunctions.CycleChecker cChecker = new PIDFunctions.CycleChecker(pidFunctions, 100);
 
         //DO STUFF
-        turn(Direction.LEFT, 90, cChecker);
+        pidFunctions.turn(Direction.LEFT, 90, cChecker);
         wait(250);
-        turn(Direction.RIGHT, 90, cChecker);
+        pidFunctions.turn(Direction.RIGHT, 90, cChecker);
         wait(250);
-        straight(bot.MAX_SPEED, new TimeChecker(1000));
+        pidFunctions.straight(bot.MAX_SPEED, new TimeChecker(1000));
     }
 }
