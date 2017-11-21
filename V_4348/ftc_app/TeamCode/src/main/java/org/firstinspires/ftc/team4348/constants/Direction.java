@@ -7,7 +7,9 @@ package org.firstinspires.ftc.team4348.constants;
 public enum Direction
 {
 
-    LEFT(-1), RIGHT(1);
+    LEFT(-1), RIGHT(1),
+
+    FORWARD(1), BACKWARD(-1);
 
     public int v;
 
