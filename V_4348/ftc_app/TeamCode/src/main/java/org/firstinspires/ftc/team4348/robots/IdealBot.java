@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.team4348.constants.HardwareName;
 import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
 
 /**
