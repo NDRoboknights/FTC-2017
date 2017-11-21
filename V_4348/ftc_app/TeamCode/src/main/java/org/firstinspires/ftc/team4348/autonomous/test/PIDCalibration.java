@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.team4348.autonomous.test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.constants.Direction;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 import org.firstinspires.ftc.team4348.robots.IMUBot;
 
 /**
@@ -22,16 +24,15 @@ public class PIDCalibration extends CustomAutonomous
     @Override
     public void runOpMode() throws InterruptedException
     {
-        setBot(bot);
         bot.init(hardwareMap);
 
         double p = 0.001;
         double i = 0.000;
         double d = 0.000;
-        pidController = new PIDController(bot.imu, 0.001, 0, 0);
-        setPidController(pidController);
 
-        CycleChecker cChecker = new CycleChecker(pidController.D_EXTRACYCLES);
+        pidController = new PIDController(bot.imu, new PIDCoefficients(p,i,d));
+        PIDFunctions pidFunctions = new PIDFunctions(bot, pidController);
+        PIDFunctions.CycleChecker cChecker = new PIDFunctions.CycleChecker(pidFunctions, pidController.D_EXTRACYCLES);
 
         waitForStart();
 
@@ -43,7 +44,7 @@ public class PIDCalibration extends CustomAutonomous
             boolean a = gamepad1.a, x = gamepad1.x, b = gamepad1.b, y = gamepad1.y;
 
             if(a && !prevA) {
-                turn(Direction.LEFT, 90, cChecker);
+                pidFunctions.turn(Direction.LEFT, 90, cChecker);
             }
 
             if(x && Math.abs(leftStick) > THRESHOLD)

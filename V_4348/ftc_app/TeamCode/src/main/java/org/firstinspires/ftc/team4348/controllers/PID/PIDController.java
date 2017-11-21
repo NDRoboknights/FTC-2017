@@ -21,7 +21,7 @@ public class PIDController
     public int cycles = 0;
     public final int D_EXTRACYCLES = 100;
 
-    public PIDController(ADAFruitIMU imu, PIDCoefficients pidc)
+    public PIDController(PIDInput imu, PIDCoefficients pidc)
     {
         this.pidInput = imu;
         this.pidc = pidc;
