@@ -9,12 +9,13 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDInput;
 
 /**
  * Created by Evyn on 10/3/2017.
  */
 
-public class ADAFruitIMU
+public class ADAFruitIMU extends PIDInput
 {
     // The IMU sensor object
     public BNO055IMU imu;
@@ -45,7 +46,8 @@ public class ADAFruitIMU
         return orent.firstAngle;
     }
 
-    public double normalizeInput(double value)
+    @Override
+    public double normalizeValue(double value)
     {
         while(value >= 360) {
             value -= 360;
@@ -54,5 +56,17 @@ public class ADAFruitIMU
             value += 360;
         }
         return value;
+    }
+
+    @Override
+    public double normalizeError(double error)
+    {
+        if(error < -180) {
+            error += 360;
+        }
+        else if(error > 180) {
+            error -= 360;
+        }
+        return error;
     }
 }

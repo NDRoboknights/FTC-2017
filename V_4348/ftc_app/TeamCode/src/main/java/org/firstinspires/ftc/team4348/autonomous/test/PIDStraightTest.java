@@ -3,7 +3,7 @@ package org.firstinspires.ftc.team4348.autonomous.test;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
-import org.firstinspires.ftc.team4348.controllers.PIDController;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.robots.IMUBot;
 
 /**

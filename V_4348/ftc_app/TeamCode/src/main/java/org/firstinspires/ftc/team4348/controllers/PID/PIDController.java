@@ -1,12 +1,8 @@
-package org.firstinspires.ftc.team4348.controllers;
+package org.firstinspires.ftc.team4348.controllers.PID;
 
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
+import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
 
 /**
  * Created by Evyn on 10/3/2017.
@@ -14,7 +10,7 @@ import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 
 public class PIDController
 {
-    ADAFruitIMU imu = null;
+    PIDInput pidInput = null;
     PIDCoefficients pidc = null;
     final double ACC_ERR = 0.2;
 
@@ -27,7 +23,7 @@ public class PIDController
 
     public PIDController(ADAFruitIMU imu, PIDCoefficients pidc)
     {
-        this.imu = imu;
+        this.pidInput = imu;
         this.pidc = pidc;
     }
 
@@ -50,9 +46,14 @@ public class PIDController
         PIDThread = null;
     }
 
+    public double getValue()
+    {
+        return pidInput.getValue();
+    }
+
     public void setTarget(double value)
     {
-        target = imu.normalizeInput(value);
+        target = pidInput.normalizeValue(value);
     }
 
     public double getOutput()
@@ -67,19 +68,8 @@ public class PIDController
 
     public double getError()
     {
-        double error = target - getValue();
-        if(error < -180) {
-            error += 360;
-        }
-        else if(error > 180) {
-            error -= 360;
-        }
-        return error;
-    }
-
-    public double getValue()
-    {
-        return imu.normalizeInput(imu.getValue());
+        double error = target - pidInput.getValue();
+        return pidInput.normalizeError(error);
     }
 
     public class PIDRunnable implements Runnable

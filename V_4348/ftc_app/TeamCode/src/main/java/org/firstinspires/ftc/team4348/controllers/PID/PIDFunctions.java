@@ -1,9 +1,8 @@
-package org.firstinspires.ftc.team4348.utils;
+package org.firstinspires.ftc.team4348.controllers.PID;
 
-import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.constants.Direction;
-import org.firstinspires.ftc.team4348.controllers.PIDController;
 import org.firstinspires.ftc.team4348.robots.Bot;
+import org.firstinspires.ftc.team4348.utils.StatusChecker;
 
 import static org.firstinspires.ftc.team4348.utils.Utilities.scalePower;
 

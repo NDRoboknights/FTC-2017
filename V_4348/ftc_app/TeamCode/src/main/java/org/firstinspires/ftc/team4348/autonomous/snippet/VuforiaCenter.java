@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.team4348.autonomous.snippet;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -11,11 +9,10 @@ import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
-import org.firstinspires.ftc.team4348.controllers.PIDController;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.controllers.Vuforia;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
-import org.firstinspires.ftc.team4348.utils.PIDFunctions;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 
 /**
  * Created by RoboKnights on 11/17/2017.
