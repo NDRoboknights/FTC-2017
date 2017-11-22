@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.team4348.controllers.PID;
 
-import org.firstinspires.ftc.team4348.constants.Direction;
+import org.firstinspires.ftc.team4348.utils.Direction;
 import org.firstinspires.ftc.team4348.robots.Bot;
 import org.firstinspires.ftc.team4348.utils.StatusChecker;
 

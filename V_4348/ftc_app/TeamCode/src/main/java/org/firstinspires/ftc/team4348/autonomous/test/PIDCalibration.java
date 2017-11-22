@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
-import org.firstinspires.ftc.team4348.constants.Direction;
+import org.firstinspires.ftc.team4348.utils.Direction;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 import org.firstinspires.ftc.team4348.robots.IMUBot;

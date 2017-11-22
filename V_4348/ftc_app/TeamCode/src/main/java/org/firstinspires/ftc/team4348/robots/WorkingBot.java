@@ -2,16 +2,11 @@ package org.firstinspires.ftc.team4348.robots;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.team4348.constants.HardwareName;
 import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
-import org.firstinspires.ftc.team4348.utils.StatusChecker;
-import org.firstinspires.ftc.team4348.utils.Utilities;
 
 /**
  * Created by evynm on 10/5/2017.
