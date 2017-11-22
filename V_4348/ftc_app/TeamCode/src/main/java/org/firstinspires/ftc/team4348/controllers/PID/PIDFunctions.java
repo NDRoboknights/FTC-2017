@@ -105,21 +105,4 @@ public class PIDFunctions
             }
         }
     }
-
-    public static class CycleChecker extends StatusChecker
-    {
-        int extraCycles;
-        PIDFunctions func;
-
-        public CycleChecker(PIDFunctions func, int extraCycles)
-        {
-            this.func = func;
-            this.extraCycles = extraCycles;
-        }
-
-        @Override
-        public boolean checkStatus() {
-            return func.pidController.cycles < extraCycles;
-        }
-    }
 }

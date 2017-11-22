@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
+import org.firstinspires.ftc.team4348.controllers.PID.CycleChecker;
 import org.firstinspires.ftc.team4348.utils.Direction;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
@@ -32,7 +33,7 @@ public class PIDCalibration extends CustomAutonomous
 
         pidController = new PIDController(bot.imu, new PIDCoefficients(p,i,d));
         PIDFunctions pidFunctions = new PIDFunctions(bot, pidController);
-        PIDFunctions.CycleChecker cChecker = new PIDFunctions.CycleChecker(pidFunctions, pidController.D_EXTRACYCLES);
+        CycleChecker cChecker = new CycleChecker(pidFunctions, pidController.D_EXTRACYCLES);
 
         waitForStart();
 

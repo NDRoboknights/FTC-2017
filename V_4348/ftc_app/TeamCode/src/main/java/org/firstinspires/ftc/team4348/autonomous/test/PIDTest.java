@@ -3,6 +3,7 @@ package org.firstinspires.ftc.team4348.autonomous.test;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
+import org.firstinspires.ftc.team4348.controllers.PID.CycleChecker;
 import org.firstinspires.ftc.team4348.utils.Direction;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
@@ -28,7 +29,7 @@ public class PIDTest extends CustomAutonomous
 
         waitForStart();
 
-        PIDFunctions.CycleChecker cChecker = new PIDFunctions.CycleChecker(pidFunctions, 100);
+        CycleChecker cChecker = new CycleChecker(pidFunctions, 100);
 
         //DO STUFF
         pidFunctions.turn(Direction.LEFT, 90, cChecker);
