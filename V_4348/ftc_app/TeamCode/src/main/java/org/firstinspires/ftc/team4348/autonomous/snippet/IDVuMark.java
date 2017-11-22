@@ -14,6 +14,7 @@ import org.firstinspires.ftc.team4348.controllers.Vuforia;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 import org.firstinspires.ftc.team4348.utils.StatusChecker;
+import org.firstinspires.ftc.team4348.utils.TimeChecker;
 
 /**
  * Created by RoboKnights on 11/17/2017.
@@ -23,10 +24,8 @@ import org.firstinspires.ftc.team4348.utils.StatusChecker;
 public class IDVuMark
 {
     static Vuforia vuforia;
-    static int cycles;
-    private static VuforiaTrackable relicTemplate;
 
-    public static void initialize(WorkingBot bot)
+    public static RelicRecoveryVuMark run(WorkingBot bot, long timeout)
     {
         vuforia = new Vuforia(bot.hardwareMap);
         PIDFunctions pidFunc = new PIDFunctions(bot, new PIDController(bot.imu, bot.PIDC));
@@ -41,11 +40,14 @@ public class IDVuMark
         //Assume:
         //(1) bot is facing away from relic recovery on blue, towards for red...
         //(2) phone is mounted to the left of the robot
-    }
+        RelicRecoveryVuMark vumark = null;
 
-    public static RelicRecoveryVuMark getVuMark()
-    {
-        //get the VuMark
-        return RelicRecoveryVuMark.from(relicTemplate);
+        TimeChecker tChecker = new TimeChecker(timeout);
+        while(vumark == null && tChecker.checkStatus())
+        {
+            vumark = RelicRecoveryVuMark.from(relicTemplate);
+        }
+
+        return vumark;
     }
 }

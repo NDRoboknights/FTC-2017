@@ -3,6 +3,7 @@ package org.firstinspires.ftc.team4348.autonomous.snippet;
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.utils.Direction;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
+import org.firstinspires.ftc.team4348.utils.TimeChecker;
 
 import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
 
@@ -12,7 +13,7 @@ import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
 
 public class JewelRed
 {
-    public static Direction run(WorkingBot bot)
+    public static Direction run(WorkingBot bot, long timeout)
     {
         //drop jewel servo arm
         bot.jewelServo.setPosition(0.0);
@@ -20,7 +21,9 @@ public class JewelRed
         //read color sensor and choose direction
         Direction dir = null;
 
-        while(dir == null) { //make sure we had a reading
+        TimeChecker tChecker = new TimeChecker(timeout);
+        while(dir == null && tChecker.checkStatus())
+        { //make sure we had a reading
             //RGBA.red returns [0,255]
             //if above threshold, choose that direction
             if (bot.cSensor1.red() >= CustomAutonomous.COLOR_THRESHOLD) {
@@ -32,8 +35,10 @@ public class JewelRed
             }
         }
 
-        bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 200);
-        delay(50);
+        if(dir != null) {
+            bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 200);
+            delay(50);
+        }
 
         //retract arm
         bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
