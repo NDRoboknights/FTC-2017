@@ -39,7 +39,7 @@ public class Utilities
             }
         }
 
-        if(max < 1.0) return doubles;
+        if(max <= 1.0) return doubles;
 
         //scale everything to max
         for(int x=0; x<doubles.length; x++)
