@@ -13,18 +13,21 @@ import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.controllers.Vuforia;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
+import org.firstinspires.ftc.team4348.utils.StatusChecker;
 
 /**
  * Created by RoboKnights on 11/17/2017.
  */
 
 //The same for both red and blue per the field layout
-public class VuforiaCenter
+public class IDVuMark
 {
     static Vuforia vuforia;
-    static final double ACC_ERROR = 2;
+    static int cycles;
+    private static VuforiaTrackable relicTemplate;
 
-    public static void run(WorkingBot bot) throws InterruptedException {
+    public static void initialize(WorkingBot bot)
+    {
         vuforia = new Vuforia(bot.hardwareMap);
         PIDFunctions pidFunc = new PIDFunctions(bot, new PIDController(bot.imu, bot.PIDC));
 
@@ -36,33 +39,13 @@ public class VuforiaCenter
         relicTrackables.activate();
 
         //Assume:
-        //(1) bot is facing away from relic recovery on red, towards for blue...
-        //(2) phone is mounted to the right of the robot
+        //(1) bot is facing away from relic recovery on blue, towards for red...
+        //(2) phone is mounted to the left of the robot
+    }
 
-        //drive forward until in line with VuMark
-        PIDFunctions.PIDStraightThread sThread = new PIDFunctions.PIDStraightThread(pidFunc, bot.AUTO_MEDIUM_SPEED);
-        sThread.thread.start();
-
-        //drive forward until pose is determinable (in range of VuMark)
-        OpenGLMatrix pose;
-        do {
-            pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
-        }while(pose == null);
-
-        //drive forward until rotationalX of VuMark is 0
-        double rX;
-        do {
-            Orientation rot = Orientation.getOrientation(pose, AxesReference.EXTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES);
-
-            // Extract the rotational components of the target relative to the robot
-            rX = rot.firstAngle;
-        }while(Math.abs(rX) > 0 + ACC_ERROR);
-
-        sThread.setRunning(false);
-        sThread.thread.join();
-        bot.setDrivePower(0, 0);
-
-        //finally, get the VuMark
-        RelicRecoveryVuMark mark = RelicRecoveryVuMark.from(relicTemplate);
+    public static RelicRecoveryVuMark getVuMark()
+    {
+        //get the VuMark
+        return RelicRecoveryVuMark.from(relicTemplate);
     }
 }

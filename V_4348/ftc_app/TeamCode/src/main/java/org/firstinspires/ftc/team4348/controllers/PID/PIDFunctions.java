@@ -53,6 +53,38 @@ public class PIDFunctions
         pidController.stop();
     }
 
+    public void goToAngle(double angle, StatusChecker statusChecker)
+    {
+        pidController.setTarget(angle);
+        pidController.start();
+        while(statusChecker.checkStatus())
+        {
+            //find direction
+            double raw = pidController.getError();
+
+            double left = 1;
+            double right = 1;
+
+            if(raw > 0) {
+                right = -1;
+            }
+            else if(raw < 0) {
+                left = -1;
+            }
+
+            //set power
+            double lPower = left * Math.abs(pidController.getOutput());
+            double rPower = right * Math.abs(pidController.getOutput());
+
+            //scale to make sure not over 1.0 max
+            double[] powers = scalePower(lPower, rPower);
+
+            bot.setDrivePower(powers[0], powers[1]);
+        }
+        bot.setDrivePower(0,0);
+        pidController.stop();
+    }
+
     public void turn(Direction dir, double angle, StatusChecker sChecker)
     {
         pidController.setTarget(angle);

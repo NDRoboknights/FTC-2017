@@ -12,7 +12,7 @@ import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
 
 public class JewelBlue
 {
-    public static void run(WorkingBot bot)
+    public static Direction run(WorkingBot bot)
     {
         //drop jewel servo arm
         bot.jewelServo.setPosition(0.0);
@@ -37,5 +37,6 @@ public class JewelBlue
 
         //retract arm
         bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
+        return dir;
     }
 }

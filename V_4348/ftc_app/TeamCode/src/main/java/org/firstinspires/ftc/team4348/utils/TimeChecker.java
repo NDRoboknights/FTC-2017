@@ -8,6 +8,9 @@ public class TimeChecker extends StatusChecker
 {
     long endTime;
 
+    /**
+     * @param time the time in milliseconds to complete the loop
+     */
     public TimeChecker(long time)
     {
         this.endTime = System.currentTimeMillis() + time;

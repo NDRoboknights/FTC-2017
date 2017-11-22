@@ -11,6 +11,12 @@ public class CycleChecker extends StatusChecker
     int extraCycles;
     PIDFunctions func;
 
+    /**
+     * Used in PIDController to specify the amount of extra cycles within ACC_ERROR
+     * to continue running.
+     * @param func
+     * @param extraCycles
+     */
     public CycleChecker(PIDFunctions func, int extraCycles)
     {
         this.func = func;
