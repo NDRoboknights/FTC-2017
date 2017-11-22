@@ -16,15 +16,12 @@ public class ForwardCenter
 {
     public void run(WorkingBot bot)
     {
-        PIDController pidController = new PIDController(bot.imu, bot.PIDC);
-        PIDFunctions pidFunctions = new PIDFunctions(bot, pidController);
-
         //drive forward
-        pidFunctions.straight(bot.AUTO_DRIVE_SPEED, new TimeChecker(500));
+        bot.pidFunctions.straight(bot.AUTO_DRIVE_SPEED, new TimeChecker(500));
 
         delay(200);
 
         //center on zero
-        pidFunctions.goToAngle(0, new CycleChecker(pidFunctions, pidController.D_EXTRACYCLES));
+        bot.pidFunctions.goToAngle(0, new CycleChecker(bot.pidFunctions, PIDController.D_EXTRACYCLES));
     }
 }

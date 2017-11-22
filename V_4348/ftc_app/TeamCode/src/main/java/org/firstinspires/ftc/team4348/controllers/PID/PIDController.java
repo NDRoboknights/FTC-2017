@@ -19,7 +19,7 @@ public class PIDController
     public double target;
     public double output;
     public int cycles = 0;
-    public final int D_EXTRACYCLES = 100;
+    public static final int D_EXTRACYCLES = 100;
 
     public PIDController(PIDInput imu, PIDCoefficients pidc)
     {

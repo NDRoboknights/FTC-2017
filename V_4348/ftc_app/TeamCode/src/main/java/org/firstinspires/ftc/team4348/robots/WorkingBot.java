@@ -7,6 +7,8 @@ import com.qualcomm.robotcore.hardware.PIDCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
+import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 
 /**
  * Created by evynm on 10/5/2017.
@@ -19,6 +21,9 @@ public class WorkingBot extends Bot
     public DcMotor middleMotor;
 
     public ADAFruitIMU imu;
+    public PIDController pidController;
+    public PIDFunctions pidFunctions;
+
     public ColorSensor cSensor1;
     public ColorSensor cSensor2;
 
@@ -68,6 +73,7 @@ public class WorkingBot extends Bot
 
         //sensors
         imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
+        pidFunctions = new PIDFunctions(this, pidController = new PIDController(this.imu, PIDC));
 
         cSensor1 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR1.name);
         cSensor2 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR2.name);
