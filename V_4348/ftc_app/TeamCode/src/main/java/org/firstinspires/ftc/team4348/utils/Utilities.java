@@ -7,7 +7,7 @@ public class Utilities
         Object monitor = new Object();
         while(sChecker.checkStatus()) {
             try {
-                monitor.wait(2);
+                monitor.wait(1);
             } catch (InterruptedException ignored) {
 
             }
