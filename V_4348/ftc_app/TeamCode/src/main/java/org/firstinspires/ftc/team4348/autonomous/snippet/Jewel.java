@@ -7,9 +7,6 @@ import org.firstinspires.ftc.team4348.utils.TimeChecker;
 
 import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
 
-/**
- * Created by Evyn on 11/21/2017.
- */
 
 public class Jewel
 {

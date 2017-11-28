@@ -2,9 +2,6 @@ package org.firstinspires.ftc.team4348.controllers.PID;
 
 import org.firstinspires.ftc.team4348.utils.StatusChecker;
 
-/**
- * Created by Evyn on 11/21/2017.
- */
 
 public class CycleChecker extends StatusChecker
 {

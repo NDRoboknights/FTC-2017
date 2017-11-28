@@ -8,9 +8,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
 
-/**
- * Created by evynm on 10/5/2017.
- */
 
 public class IdealBot extends Bot
 {

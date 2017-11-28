@@ -8,10 +8,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.controllers.Vuforia;
 
-/**
- * Created by Evyn on 10/3/2017.
- */
-
 @Autonomous(name="Test: VuforiaTest",group="Test")
 public class VuforiaTest extends CustomAutonomous
 {

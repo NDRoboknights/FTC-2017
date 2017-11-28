@@ -5,9 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.team4348.robots.ServoBot;
 import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;
 
-/**
- * Created by RoboKnights on 11/20/2017.
- */
 
 @TeleOp(name="ServoTest: Jewel",group="ServoTest")
 public class ServoTest extends CustomTeleOp

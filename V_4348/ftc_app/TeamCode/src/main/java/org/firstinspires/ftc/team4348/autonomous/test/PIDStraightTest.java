@@ -9,10 +9,6 @@ import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 import org.firstinspires.ftc.team4348.robots.IMUBot;
 import org.firstinspires.ftc.team4348.utils.TimeChecker;
 
-/**
- * Created by Evyn on 10/3/2017.
- */
-
 @Autonomous(name="Test: PIDStraightTest",group="Test")
 public class PIDStraightTest extends CustomAutonomous
 {

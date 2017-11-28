@@ -4,9 +4,6 @@ import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
 
-/**
- * Created by Evyn on 10/3/2017.
- */
 
 public class PIDController
 {

@@ -6,9 +6,6 @@ import org.firstinspires.ftc.team4348.utils.StatusChecker;
 
 import static org.firstinspires.ftc.team4348.utils.Utilities.scalePower;
 
-/**
- * Created by RoboKnights on 11/20/2017.
- */
 
 public class PIDFunctions
 {

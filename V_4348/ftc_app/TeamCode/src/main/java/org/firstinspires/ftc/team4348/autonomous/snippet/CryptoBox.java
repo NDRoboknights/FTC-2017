@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.team4348.autonomous.snippet;
 
-import android.drm.DrmInfoRequest;
-
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
@@ -9,13 +7,8 @@ import org.firstinspires.ftc.team4348.robots.WorkingBot;
 import org.firstinspires.ftc.team4348.utils.Direction;
 import org.firstinspires.ftc.team4348.utils.TimeChecker;
 
-import java.sql.Time;
-
 import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
 
-/**
- * Created by Evyn on 11/21/2017.
- */
 
 public class CryptoBox
 {

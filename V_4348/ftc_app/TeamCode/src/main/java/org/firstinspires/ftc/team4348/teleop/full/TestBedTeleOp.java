@@ -3,9 +3,6 @@ package org.firstinspires.ftc.team4348.teleop.full;
 import org.firstinspires.ftc.team4348.robots.TestBedBot;
 import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;
 
-/**
- * Created by RoboKnights on 11/19/2017.
- */
 
 public class TestBedTeleOp extends CustomTeleOp
 {

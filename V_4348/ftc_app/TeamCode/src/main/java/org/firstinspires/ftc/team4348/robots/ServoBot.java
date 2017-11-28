@@ -3,11 +3,6 @@ package org.firstinspires.ftc.team4348.robots;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.team4348.constants.HardwareName;
-
-/**
- * Created by Evyn on 11/20/2017.
- */
 
 public class ServoBot extends Bot
 {

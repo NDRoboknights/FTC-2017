@@ -6,9 +6,6 @@ import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
 
-/**
- * Created by evynm on 10/4/2017.
- */
 
 public class IMUBot extends Bot
 {

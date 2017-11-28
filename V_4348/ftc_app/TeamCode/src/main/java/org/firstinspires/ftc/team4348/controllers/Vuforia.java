@@ -5,9 +5,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 
-/**
- * Created by evynm on 10/13/2017.
- */
 
 public class Vuforia
 {

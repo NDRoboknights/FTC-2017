@@ -1,8 +1,5 @@
 package org.firstinspires.ftc.team4348.controllers.PID;
 
-/**
- * Created by RoboKnights on 11/20/2017.
- */
 
 public abstract class PIDInput
 {

@@ -10,10 +10,6 @@ import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 import org.firstinspires.ftc.team4348.robots.IMUBot;
 
-/**
- * Created by evynm on 10/4/2017.
- */
-
 @Autonomous(name="Calibration: PIDCalibration",group="Calibration")
 public class PIDCalibration extends CustomAutonomous
 {

@@ -11,9 +11,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDInput;
 
-/**
- * Created by Evyn on 10/3/2017.
- */
 
 public class ADAFruitIMU extends PIDInput
 {

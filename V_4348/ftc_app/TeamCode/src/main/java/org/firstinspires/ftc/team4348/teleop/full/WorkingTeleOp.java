@@ -5,9 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;
 
-/**
- * Created by RoboKnights on 11/18/2017.
- */
 
 @TeleOp(name="WorkingTele")
 public class WorkingTeleOp extends CustomTeleOp

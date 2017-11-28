@@ -10,9 +10,6 @@ import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 
-/**
- * Created by evynm on 10/5/2017.
- */
 
 public class WorkingBot extends Bot
 {

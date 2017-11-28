@@ -3,9 +3,6 @@ package org.firstinspires.ftc.team4348.robots;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-/**
- * Created by evynm on 10/3/2017.
- */
 
 public class TestBedBot extends Bot
 {
