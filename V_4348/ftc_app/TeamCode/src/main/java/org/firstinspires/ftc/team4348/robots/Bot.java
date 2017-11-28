@@ -3,8 +3,6 @@ package org.firstinspires.ftc.team4348.robots;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.team4348.utils.StatusChecker;
-
 import java.util.ArrayList;
 
 import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
@@ -15,7 +13,6 @@ public abstract class Bot
     public ArrayList<DcMotor> rightMotors = new ArrayList<>();
     public ArrayList<DcMotor> otherMotors = new ArrayList<>();
     public double MAX_SPEED = 1.0;
-    public HardwareMap hardwareMap;
 
     public abstract void init(HardwareMap hMap);
 
