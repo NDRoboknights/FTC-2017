@@ -3,7 +3,7 @@ package org.firstinspires.ftc.team4348.utils;
 
 public class TimeChecker extends StatusChecker
 {
-    long endTime;
+    private long endTime;
 
     /**
      * @param time the time in milliseconds to complete the loop

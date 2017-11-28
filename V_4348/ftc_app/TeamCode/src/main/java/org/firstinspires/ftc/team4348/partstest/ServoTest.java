@@ -12,6 +12,7 @@ public class ServoTest extends CustomTeleOp
     ServoBot bot = new ServoBot();
     double pos = bot.JEWEL_INIT_POS;
     double oldPos = bot.JEWEL_INIT_POS;
+    double dValue = 0.01;
 
     @Override
     public void init()
@@ -25,10 +26,10 @@ public class ServoTest extends CustomTeleOp
         if(Math.abs(gamepad1.right_stick_y) > JOYSTICK_THRESHOLD )
         {
             if(-gamepad1.right_stick_y > 0) {
-                pos += 0.01;
+                pos += dValue;
             }
             else {
-                pos -= 0.01;
+                pos -= dValue;
             }
         }
 

@@ -21,10 +21,12 @@ public class WorkingTeleOp extends CustomTeleOp
     @Override
     public void loop()
     {
-        //drive
+        //joysticks
         double lPower = -gamepad1.left_stick_y;
         double rPower = -gamepad1.right_stick_y;
 
+        //drive motors
+        //left
         if(Math.abs(lPower) > JOYSTICK_THRESHOLD) {
             lPower = scaleInput(lPower);
             bot.leftMotor.setPower(lPower);
@@ -32,6 +34,8 @@ public class WorkingTeleOp extends CustomTeleOp
         else {
             bot.leftMotor.setPower(0);
         }
+
+        //right
         if(Math.abs(rPower) > JOYSTICK_THRESHOLD) {
             rPower = scaleInput(rPower);
             bot.rightMotor.setPower(rPower);
@@ -40,7 +44,8 @@ public class WorkingTeleOp extends CustomTeleOp
             bot.rightMotor.setPower(0);
         }
 
-        //arm
+
+        //intakes
         if(gamepad1.right_trigger >= 0.5) {
             bot.runIntakeMotors(-1);
         }
@@ -51,6 +56,8 @@ public class WorkingTeleOp extends CustomTeleOp
             bot.runIntakeMotors(0);
         }
 
+
+        //up down of intake
         if(gamepad1.right_bumper) {
             bot.runUpMotors(1);
         }

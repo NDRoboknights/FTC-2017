@@ -5,11 +5,13 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 
-
+/**
+ * Allows for easy objectification of Vuforia engine.
+ */
 public class Vuforia
 {
     /**
-     * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
+     * {@link #localizer} is the variable we will use to store our instance of the Vuforia
      * localization engine.
      */
     public VuforiaLocalizer localizer;

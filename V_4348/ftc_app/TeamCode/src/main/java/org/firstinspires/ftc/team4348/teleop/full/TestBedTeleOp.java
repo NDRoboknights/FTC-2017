@@ -16,10 +16,12 @@ public class TestBedTeleOp extends CustomTeleOp
     @Override
     public void loop()
     {
+        //joysticks
         double leftPower = gamepad1.left_stick_y;
         double rightPower = gamepad1.right_stick_y;
 
         //drive motors
+        //left
         if(Math.abs(leftPower) > JOYSTICK_THRESHOLD) {
             leftPower = scaleInput(leftPower);
             bot.leftMotor.setPower(leftPower);
@@ -28,6 +30,7 @@ public class TestBedTeleOp extends CustomTeleOp
             bot.leftMotor.setPower(0);
         }
 
+        //right
         if(Math.abs(rightPower) > JOYSTICK_THRESHOLD) {
             rightPower = scaleInput(rightPower);
             bot.rightMotor.setPower(rightPower);
@@ -35,6 +38,7 @@ public class TestBedTeleOp extends CustomTeleOp
         else {
             bot.rightMotor.setPower(0);
         }
+
 
         //middle
         if(gamepad1.dpad_left) {

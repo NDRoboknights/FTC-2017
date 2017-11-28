@@ -11,7 +11,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDInput;
 
-
+/**
+ * Allows for easy objectification of the ADAFruitIMU.
+ * Initializes it at construction. Assumes calibration has taken place.
+ * Calibration Data File = "AdafruitIMUCalibration.json"
+ */
 public class ADAFruitIMU extends PIDInput
 {
     // The IMU sensor object

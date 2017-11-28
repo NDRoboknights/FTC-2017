@@ -2,14 +2,17 @@ package org.firstinspires.ftc.team4348.controllers.PID;
 
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
-import org.firstinspires.ftc.team4348.controllers.ADAFruitIMU;
-
-
+/**
+ * Uses a PID Function to control the output given {@link PIDCoefficients} and a {@link #pidInput}
+ * of type PIDInput.
+ * The PID Function runs in its own seperate thread whose {@link #output} can be called with
+ * {@link #getOutput()}.
+ */
 public class PIDController
 {
     PIDInput pidInput = null;
     PIDCoefficients pidc = null;
-    final double ACC_ERR = 0.2;
+    double accError = 0.2;
 
     public Thread PIDThread = null;
     boolean isRunning = false;
@@ -22,6 +25,14 @@ public class PIDController
     {
         this.pidInput = imu;
         this.pidc = pidc;
+        this.accError = accError;
+    }
+
+    public PIDController(PIDInput imu, PIDCoefficients pidc, double accError)
+    {
+        this.pidInput = imu;
+        this.pidc = pidc;
+        this.accError = accError;
     }
 
     public void start()
@@ -84,7 +95,7 @@ public class PIDController
             {
                 currErr = getError();
 
-                if(Math.abs(currErr) < ACC_ERR) { //if current errror < acceptable error
+                if(Math.abs(currErr) < accError) { //if current errror < acceptable error
                     cycles++; //add counter for extra cycles
                 }
 

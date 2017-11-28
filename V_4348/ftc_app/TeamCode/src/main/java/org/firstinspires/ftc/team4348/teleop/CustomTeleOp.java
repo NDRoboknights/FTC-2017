@@ -2,12 +2,19 @@ package org.firstinspires.ftc.team4348.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import java.text.DecimalFormat;
 
-
+/**
+ * Most TeleOps made extends this TeleOp which includes TeleOp constants like <code>JOYSTICK_THRESHOLD</code>
+ * and functions like <code>scaleInput(...)</code>
+ */
 public abstract class CustomTeleOp extends OpMode
 {
-    public static final double JOYSTICK_THRESHOLD = 0.125;
+    protected static final double JOYSTICK_THRESHOLD = 0.125;
+
+    /**
+     * @param dVal The value to scale.
+     * @return Returns the nearest multiple of 0.05 but not over 1.00
+     */
     public double scaleInput(double dVal)
     {
         double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
@@ -21,7 +28,7 @@ public abstract class CustomTeleOp extends OpMode
             index = 16;
         }
 
-        double dScale = 0.0;
+        double dScale;
         if (dVal < 0) {
             dScale = -scaleArray[index];
         } else {

@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.team4348.utils;
 
 
+/**
+ * Arbitrarily chosen units for LEFT, RIGHT, FORWARD, and BACKWARD
+ */
 public enum Direction
 {
 
