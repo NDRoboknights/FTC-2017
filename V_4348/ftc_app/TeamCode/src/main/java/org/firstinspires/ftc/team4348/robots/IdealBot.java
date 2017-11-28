@@ -43,6 +43,7 @@ public class IdealBot extends Bot
         //other motors
         intakeMotor1 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_ONE.name);
         intakeMotor2 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_TWO.name);
+        intakeMotor2.setDirection(DcMotor.Direction.REVERSE);
 
         upDownMotor1 = hMap.dcMotor.get(HardwareName.UP_MOTOR_ONE.name);
         upDownMotor2 = hMap.dcMotor.get(HardwareName.UP_MOTOR_TWO.name);
