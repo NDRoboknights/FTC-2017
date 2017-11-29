@@ -32,10 +32,9 @@ public class IDVuMark
         RelicRecoveryVuMark vumark = null;
 
         TimeChecker tChecker = new TimeChecker(timeout);
-        while(vumark == null && tChecker.checkStatus())
-        {
+        do {
             vumark = RelicRecoveryVuMark.from(relicTemplate);
-        }
+        }while(vumark == null && tChecker.checkStatus());
 
         return vumark;
     }
