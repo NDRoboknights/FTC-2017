@@ -25,22 +25,13 @@ public class ServoTest extends CustomTeleOp
     {
         if(Math.abs(gamepad1.right_stick_y) > JOYSTICK_THRESHOLD )
         {
+            //increment pos by dValue
             if(-gamepad1.right_stick_y > 0) {
                 pos += dValue;
             }
             else {
                 pos -= dValue;
             }
-        }
-
-        if(gamepad1.a) {
-            bot.jewelServo.setPosition(bot.JEWEL_INIT_POS);
-            pos = bot.JEWEL_INIT_POS;
-            oldPos = pos;
-        }
-
-        if(gamepad1.b) {
-            bot.jewelServo.setPosition(oldPos);
         }
 
         bot.jewelServo.setPosition(pos);

@@ -29,21 +29,23 @@ public class PIDCalibration extends CustomAutonomous
 
         pidController = new PIDController(bot.imu, new PIDCoefficients(p,i,d));
         PIDFunctions pidFunctions = new PIDFunctions(bot, pidController);
-        CycleChecker cChecker = new CycleChecker(pidFunctions, pidController.D_EXTRACYCLES);
+        CycleChecker cChecker = new CycleChecker(pidFunctions, PIDController.D_EXTRACYCLES);
 
         waitForStart();
 
         boolean prevA = false;
-        //DO STUFF
         while(opModeIsActive())
         {
             double leftStick = -gamepad1.left_stick_y;
             boolean a = gamepad1.a, x = gamepad1.x, b = gamepad1.b, y = gamepad1.y;
 
+            //if press A, but not continuous, turn left 90 degrees
             if(a && !prevA) {
+                pidController.setPidc(p, i, d);
                 pidFunctions.turn(Direction.LEFT, 90, cChecker);
             }
 
+            //while holding x, increment P by DELTA_VAL
             if(x && Math.abs(leftStick) > THRESHOLD)
             {
                 if(leftStick < 0) {
@@ -54,6 +56,7 @@ public class PIDCalibration extends CustomAutonomous
                 }
             }
 
+            //while holding b, increase D by DELTA_VAL
             if(b && Math.abs(leftStick) > THRESHOLD)
             {
                 if(leftStick < 0) {
@@ -64,6 +67,7 @@ public class PIDCalibration extends CustomAutonomous
                 }
             }
 
+            //while holding y, increase I by DELTA_VAL
             if(y && Math.abs(leftStick) > THRESHOLD)
             {
                 if(leftStick < 0) {
@@ -73,8 +77,6 @@ public class PIDCalibration extends CustomAutonomous
                     i += DELTA_VAL;
                 }
             }
-
-            pidController.setPidc(p, i, d);
             prevA = a;
 
             telemetry.addData("IMU: ", bot.imu.getValue());
