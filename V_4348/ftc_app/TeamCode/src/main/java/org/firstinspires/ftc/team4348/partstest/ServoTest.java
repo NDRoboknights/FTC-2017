@@ -32,9 +32,9 @@ public class ServoTest extends CustomTeleOp
             else {
                 pos -= dValue;
             }
+            bot.jewelServo.setPosition(pos);
         }
 
-        bot.jewelServo.setPosition(pos);
         telemetry.addData("Position: ", bot.jewelServo.getPosition());
         telemetry.update();
     }
