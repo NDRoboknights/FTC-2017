@@ -19,6 +19,6 @@ public class ForwardCenter
         delay(200);
 
         //center on zero
-        bot.pidFunctions.goToAngle(0, new CycleChecker(bot.pidFunctions, PIDController.D_EXTRACYCLES));
+        bot.pidFunctions.goToAngle(bot.startingAngle, new CycleChecker(bot.pidFunctions, PIDController.D_EXTRACYCLES));
     }
 }

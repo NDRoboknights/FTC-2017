@@ -35,6 +35,7 @@ public class WorkingBot extends Bot
 
     public final double AUTO_DRIVE_SPEED = 0.9;
     public final double AUTO_MEDIUM_SPEED = 0.5;
+    public double startingAngle;
 
     public final PIDCoefficients PIDC = new PIDCoefficients(0.001, 0.001, 0.001);
 
@@ -77,6 +78,8 @@ public class WorkingBot extends Bot
         cSensor2 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR2.name);
         cSensor1.enableLed(true);
         cSensor2.enableLed(true);
+
+        startingAngle = imu.getValue();
     }
 
     public void runIntakeMotors(double power)
