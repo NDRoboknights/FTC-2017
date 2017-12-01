@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.team4348.robots.WorkingBot;
 import org.firstinspires.ftc.team4348.teleop.CustomTeleOp;
+import org.firstinspires.ftc.team4348.utils.Direction;
 
 
 @TeleOp(name="WorkingTele")
@@ -42,6 +43,17 @@ public class WorkingTeleOp extends CustomTeleOp
         }
         else {
             bot.rightMotor.setPower(0);
+        }
+
+        //middle
+        if(gamepad1.dpad_right) {
+            bot.middleMotor.setPower(Direction.RIGHT.v);
+        }
+        else if(gamepad1.dpad_left) {
+            bot.middleMotor.setPower(Direction.LEFT.v);
+        }
+        else {
+            bot.middleMotor.setPower(0);
         }
 
 
