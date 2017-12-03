@@ -84,12 +84,12 @@ public class PIDFunctions
 
     public void turn(Direction dir, double angle, StatusChecker sChecker)
     {
-        pidController.setTarget(angle);
+        pidController.setTarget(pidController.pidInput.normalizeValue(pidController.pidInput.getValue() + dir.v * angle));
         pidController.start();
         while(sChecker.checkStatus())
         {
-            double lPower = dir.v * Math.abs(pidController.getOutput());
-            double rPower = -dir.v * Math.abs(pidController.getOutput());
+            double lPower = -dir.v * pidController.getOutput();
+            double rPower = dir.v * pidController.getOutput();
 
             double[] powers = scalePower(lPower, rPower);
             bot.setDrivePower(powers[0], powers[1]);
