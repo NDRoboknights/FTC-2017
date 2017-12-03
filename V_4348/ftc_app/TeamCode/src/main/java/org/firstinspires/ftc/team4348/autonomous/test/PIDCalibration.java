@@ -17,15 +17,16 @@ public class PIDCalibration extends CustomAutonomous
     WorkingBot bot = new WorkingBot();
     PIDController pidController;
     final double THRESHOLD = 0.5;
-    final double DELTA_VAL = 0.001;
+    final double DELTA_VAL = 0.001;//I am coding for evyn while he uses the restroom
+
 
     @Override
     public void runOpMode() throws InterruptedException
     {
         bot.init(hardwareMap);
 
-        double p = 0.001;
-        double i = 0.000;
+        double p = 0.024;
+        double i = 0.012;
         double d = 0.000;
 
         pidController = new PIDController(bot.imu, new PIDCoefficients(p,i,d));
