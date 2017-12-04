@@ -33,7 +33,7 @@ public class WorkingBot extends Bot
     public DcMotor upDownMotor1;
     public DcMotor upDownMotor2;
 
-    public final double AUTO_DRIVE_SPEED = 0.9;
+    public final double AUTO_DRIVE_SPEED = 0.7;
     public final double AUTO_MEDIUM_SPEED = 0.5;
     public double startingAngle;
 
@@ -46,7 +46,7 @@ public class WorkingBot extends Bot
         //drive motors
         leftMotor = hMap.dcMotor.get(HardwareName.LEFT_MOTOR_ONE.name);
         rightMotor = hMap.dcMotor.get(HardwareName.RIGHT_MOTOR_ONE.name);
-        middleMotor = hMap.dcMotor.get(HardwareName.MIDDLE_MOTOR_ONE.name);
+//        middleMotor = hMap.dcMotor.get(HardwareName.MIDDLE_MOTOR_ONE.name);
 
         //other motors
         intakeMotors = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_ONE.name);
@@ -57,14 +57,14 @@ public class WorkingBot extends Bot
 
         leftMotors.add(leftMotor);
         rightMotors.add(rightMotor);
-        otherMotors.add(middleMotor);
+//        otherMotors.add(middleMotor);
         otherMotors.add(intakeMotors);
         otherMotors.add(upDownMotor1);
         otherMotors.add(upDownMotor2);
 
         //servos
-        jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
-        jewelServo.setPosition(JEWEL_INIT_POS);
+//        jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
+//        jewelServo.setPosition(JEWEL_INIT_POS);
 
         //sensors
         imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
