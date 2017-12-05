@@ -63,16 +63,16 @@ public class WorkingBot extends Bot
         otherMotors.add(upDownMotor2);
 
         //servos
-//        jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
-//        jewelServo.setPosition(JEWEL_INIT_POS);
+        jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
+        jewelServo.setPosition(JEWEL_INIT_POS);
 
         //sensors
         imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
         pidFunctions = new PIDFunctions(this, pidController = new PIDController(this.imu, PIDC));
 
-        //cSensor1 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR1.name);
+        cSensor1 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR1.name);
         //cSensor2 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR2.name);
-        //cSensor1.enableLed(true);
+        cSensor1.enableLed(true);
         //cSensor2.enableLed(true);
 
         startingAngle = imu.getValue();
