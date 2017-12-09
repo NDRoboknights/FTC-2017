@@ -10,6 +10,8 @@ import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
 import org.firstinspires.ftc.team4348.robots.IMUBot;
 import org.firstinspires.ftc.team4348.utils.TimeChecker;
 
+import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
+
 @Autonomous(name="Test: PIDTest",group="Test")
 public class PIDTest extends CustomAutonomous
 {
@@ -29,9 +31,9 @@ public class PIDTest extends CustomAutonomous
 
         //DO STUFF
         pidFunctions.turn(Direction.LEFT, 90, cChecker);
-        wait(250);
+        delay(250);
         pidFunctions.turn(Direction.RIGHT, 90, cChecker);
-        wait(250);
+        delay(250);
         pidFunctions.straight(bot.MAX_SPEED, new TimeChecker(1000));
     }
 }
