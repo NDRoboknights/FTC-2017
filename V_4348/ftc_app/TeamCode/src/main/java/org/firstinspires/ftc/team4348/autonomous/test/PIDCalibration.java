@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.firstinspires.ftc.team4348.autonomous.CustomAutonomous;
 import org.firstinspires.ftc.team4348.controllers.PID.CycleChecker;
+import org.firstinspires.ftc.team4348.robots.WorkingBot;
 import org.firstinspires.ftc.team4348.utils.Direction;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDController;
 import org.firstinspires.ftc.team4348.controllers.PID.PIDFunctions;
@@ -13,18 +14,19 @@ import org.firstinspires.ftc.team4348.robots.IMUBot;
 @Autonomous(name="Calibration: PIDCalibration",group="Calibration")
 public class PIDCalibration extends CustomAutonomous
 {
-    IMUBot bot = new IMUBot();
+    WorkingBot bot = new WorkingBot();
     PIDController pidController;
     final double THRESHOLD = 0.5;
-    final double DELTA_VAL = 0.001;
+    final double DELTA_VAL = 0.001;//I am coding for evyn while he uses the restroom
+
 
     @Override
     public void runOpMode() throws InterruptedException
     {
         bot.init(hardwareMap);
 
-        double p = 0.001;
-        double i = 0.000;
+        double p = 0.024;
+        double i = 0.012;
         double d = 0.000;
 
         pidController = new PIDController(bot.imu, new PIDCoefficients(p,i,d));
@@ -34,6 +36,8 @@ public class PIDCalibration extends CustomAutonomous
         waitForStart();
 
         boolean prevA = false;
+        boolean prevStick = false;
+
         while(opModeIsActive())
         {
             double leftStick = -gamepad1.left_stick_y;
@@ -46,7 +50,7 @@ public class PIDCalibration extends CustomAutonomous
             }
 
             //while holding x, increment P by DELTA_VAL
-            if(x && Math.abs(leftStick) > THRESHOLD)
+            if(x && !prevStick && Math.abs(leftStick) > THRESHOLD)
             {
                 if(leftStick < 0) {
                     p -= DELTA_VAL;
@@ -57,7 +61,7 @@ public class PIDCalibration extends CustomAutonomous
             }
 
             //while holding b, increase D by DELTA_VAL
-            if(b && Math.abs(leftStick) > THRESHOLD)
+            if(b && !prevStick && Math.abs(leftStick) > THRESHOLD)
             {
                 if(leftStick < 0) {
                     d -= DELTA_VAL;
@@ -68,7 +72,7 @@ public class PIDCalibration extends CustomAutonomous
             }
 
             //while holding y, increase I by DELTA_VAL
-            if(y && Math.abs(leftStick) > THRESHOLD)
+            if(y && !prevStick && Math.abs(leftStick) > THRESHOLD)
             {
                 if(leftStick < 0) {
                     i -= DELTA_VAL;
@@ -78,6 +82,7 @@ public class PIDCalibration extends CustomAutonomous
                 }
             }
             prevA = a;
+            prevStick = Math.abs(leftStick) > THRESHOLD;
 
             telemetry.addData("IMU: ", bot.imu.getValue());
             telemetry.addData("P: ", p);
