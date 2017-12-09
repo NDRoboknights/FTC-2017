@@ -11,6 +11,11 @@ import org.firstinspires.ftc.team4348.utils.Direction;
 public class WorkingTeleOp extends CustomTeleOp
 {
     WorkingBot bot = new WorkingBot();
+    double multiR = 0.625;
+    double multiL = 1.0;
+    double dVal = 0.025;
+
+    boolean butPress = false;
 
     @Override
     public void init()
@@ -23,8 +28,8 @@ public class WorkingTeleOp extends CustomTeleOp
     public void loop()
     {
         //joysticks
-        double lPower = -gamepad1.left_stick_y;
-        double rPower = -gamepad1.right_stick_y;
+        double lPower = multiL * gamepad1.left_stick_y;
+        double rPower = multiR * gamepad1.right_stick_y;
 
         //drive motors
         //left
@@ -46,23 +51,23 @@ public class WorkingTeleOp extends CustomTeleOp
         }
 
         //middle
-        if(gamepad1.dpad_right) {
-            bot.middleMotor.setPower(Direction.RIGHT.v);
-        }
-        else if(gamepad1.dpad_left) {
-            bot.middleMotor.setPower(Direction.LEFT.v);
-        }
-        else {
-            bot.middleMotor.setPower(0);
-        }
+//        if(gamepad1.dpad_right) {
+//            bot.middleMotor.setPower(Direction.RIGHT.v);
+//        }
+//        else if(gamepad1.dpad_left) {
+//            bot.middleMotor.setPower(Direction.LEFT.v);
+//        }
+//        else {
+//            bot.middleMotor.setPower(0);
+//        }
 
 
         //intakes
         if(gamepad1.right_trigger >= 0.5) {
-            bot.runIntakeMotors(-1);
+            bot.runIntakeMotors(1);
         }
         else if(gamepad1.left_trigger >= 0.5) {
-            bot.runIntakeMotors(1);
+            bot.runIntakeMotors(-1);
         }
         else {
             bot.runIntakeMotors(0);
@@ -79,5 +84,30 @@ public class WorkingTeleOp extends CustomTeleOp
         else {
             bot.runUpMotors(0);
         }
+
+
+        //scaling drive motor powers
+        if(gamepad1.x && !butPress) {
+            if(gamepad1.dpad_up) {
+                multiL += dVal;
+            }
+            else if(gamepad1.dpad_down) {
+                multiL -= dVal;
+            }
+        }
+        else if(gamepad1.b && butPress) {
+            if(gamepad1.dpad_up) {
+                multiR += dVal;
+            }
+            else if(gamepad1.dpad_down) {
+                multiR -= dVal;
+            }
+        }
+
+        butPress = gamepad1.x || gamepad1.b;
+
+        telemetry.addData("LMulti: ", multiL);
+        telemetry.addData("RMulti: ", multiR);
+        telemetry.update();
     }
 }

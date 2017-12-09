@@ -5,18 +5,20 @@ package org.firstinspires.ftc.team4348.utils;
  */
 public class Utilities
 {
+    final static Object monitor = new Object();
     /**
      * Waits untils <code>sChecker.checkStatus()</code> returns false.
      * @param sChecker Status Checker
      */
     public static void delay(StatusChecker sChecker)
     {
-        Object monitor = new Object();
-        while(sChecker.checkStatus()) {
-            try {
-                monitor.wait(1);
-            } catch (InterruptedException ignored) {
+        synchronized (monitor) {
+            while (sChecker.checkStatus()) {
+                try {
+                    monitor.wait(1);
+                } catch (InterruptedException ignored) {
 
+                }
             }
         }
     }
@@ -27,11 +29,12 @@ public class Utilities
      */
     public static void delay(long time)
     {
-        Object monitor = new Object();
-        try {
-            monitor.wait(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        synchronized (monitor) {
+            try {
+                monitor.wait(time);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

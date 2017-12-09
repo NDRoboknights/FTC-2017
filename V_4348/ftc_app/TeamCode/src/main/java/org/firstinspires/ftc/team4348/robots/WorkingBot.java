@@ -27,13 +27,12 @@ public class WorkingBot extends Bot
     public Servo jewelServo;
     public final double JEWEL_INIT_POS = 0.5;
 
-    public DcMotor intakeMotor1;
-    public DcMotor intakeMotor2;
+    public DcMotor intakeMotors;
 
     public DcMotor upDownMotor1;
     public DcMotor upDownMotor2;
 
-    public final double AUTO_DRIVE_SPEED = 0.9;
+    public final double AUTO_DRIVE_SPEED = 0.7;
     public final double AUTO_MEDIUM_SPEED = 0.5;
     public double startingAngle;
 
@@ -46,13 +45,10 @@ public class WorkingBot extends Bot
         //drive motors
         leftMotor = hMap.dcMotor.get(HardwareName.LEFT_MOTOR_ONE.name);
         rightMotor = hMap.dcMotor.get(HardwareName.RIGHT_MOTOR_ONE.name);
-        middleMotor = hMap.dcMotor.get(HardwareName.MIDDLE_MOTOR_ONE.name);
-        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+//        middleMotor = hMap.dcMotor.get(HardwareName.MIDDLE_MOTOR_ONE.name);
 
         //other motors
-        intakeMotor1 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_ONE.name);
-        intakeMotor2 = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_TWO.name);
-        intakeMotor2.setDirection(DcMotor.Direction.REVERSE);
+        intakeMotors = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_ONE.name);
 
         upDownMotor1 = hMap.dcMotor.get(HardwareName.UP_MOTOR_ONE.name);
         upDownMotor2 = hMap.dcMotor.get(HardwareName.UP_MOTOR_TWO.name);
@@ -60,9 +56,8 @@ public class WorkingBot extends Bot
 
         leftMotors.add(leftMotor);
         rightMotors.add(rightMotor);
-        otherMotors.add(middleMotor);
-        otherMotors.add(intakeMotor1);
-        otherMotors.add(intakeMotor2);
+//        otherMotors.add(middleMotor);
+        otherMotors.add(intakeMotors);
         otherMotors.add(upDownMotor1);
         otherMotors.add(upDownMotor2);
 
@@ -84,8 +79,7 @@ public class WorkingBot extends Bot
 
     public void runIntakeMotors(double power)
     {
-        intakeMotor1.setPower(power);
-        intakeMotor2.setPower(power);
+        intakeMotors.setPower(power);
     }
 
     public void runUpMotors(double power)
