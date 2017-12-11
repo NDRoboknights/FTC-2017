@@ -23,11 +23,11 @@ public class Jewel
         { //make sure we had a reading
             //RGBA.red returns [0,255]
             //if above threshold, choose that direction
-            if (bot.cSensor1.blue() >= CustomAutonomous.COLOR_THRESHOLD) {
+            if (bot.cSensor1.blue() > CustomAutonomous.COLOR_THRESHOLD) {
                 dir = Direction.BACKWARD;
             }
             //not an else statement to make sure we have a reading
-            else if (bot.cSensor1.red() >= CustomAutonomous.COLOR_THRESHOLD) {
+            else if (bot.cSensor1.red() > CustomAutonomous.COLOR_THRESHOLD) {
                 dir = Direction.FORWARD;
             }
         }
@@ -55,11 +55,11 @@ public class Jewel
         { //make sure we had a reading
             //RGBA.red returns [0,255]
             //if above threshold, choose that direction
-            if (bot.cSensor1.red() >= CustomAutonomous.COLOR_THRESHOLD) {
+            if (bot.cSensor1.red() > CustomAutonomous.COLOR_THRESHOLD) {
                 dir = Direction.BACKWARD;
             }
             //not an else statement to make sure we have a reading
-            else if (bot.cSensor1.blue() >= CustomAutonomous.COLOR_THRESHOLD) {
+            else if (bot.cSensor1.blue() > CustomAutonomous.COLOR_THRESHOLD) {
                 dir = Direction.FORWARD;
             }
         }
