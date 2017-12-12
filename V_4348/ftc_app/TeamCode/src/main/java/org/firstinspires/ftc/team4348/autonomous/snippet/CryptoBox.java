@@ -37,7 +37,7 @@ public class CryptoBox
         boolean prevColor = false;
         while(count < target && tChecker.checkStatus())
         {
-            if(!prevColor && bot.cSensor1.blue() >= CustomAutonomous.COLOR_THRESHOLD) {
+            if(!prevColor && bot.cSensor1.blue() > CustomAutonomous.COLOR_THRESHOLD) {
                 count++;
                 prevColor = true;
             }
@@ -79,7 +79,7 @@ public class CryptoBox
         boolean prevColor = false;
         while(count < target && tChecker.checkStatus())
         {
-            if(!prevColor && bot.cSensor1.blue() >= CustomAutonomous.COLOR_THRESHOLD) {
+            if(!prevColor && bot.cSensor1.blue() > CustomAutonomous.COLOR_THRESHOLD) {
                 count++;
                 prevColor = true;
             }
