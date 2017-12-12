@@ -17,7 +17,6 @@ public class IDVuMark
     public static RelicRecoveryVuMark run(WorkingBot bot, long timeout)
     {
         vuforia = new Vuforia(bot.hardwareMap);
-        PIDFunctions pidFunc = new PIDFunctions(bot, new PIDController(bot.imu, bot.PIDC));
 
         //track the RelicVuMarks
         VuforiaTrackables relicTrackables = vuforia.localizer.loadTrackablesFromAsset("RelicVuMark");
@@ -29,7 +28,7 @@ public class IDVuMark
         //Assume:
         //(1) bot is facing away from relic recovery on blue, towards for red...
         //(2) phone is mounted to the left of the robot
-        RelicRecoveryVuMark vumark = null;
+        RelicRecoveryVuMark vumark;
 
         TimeChecker tChecker = new TimeChecker(timeout);
         do {
