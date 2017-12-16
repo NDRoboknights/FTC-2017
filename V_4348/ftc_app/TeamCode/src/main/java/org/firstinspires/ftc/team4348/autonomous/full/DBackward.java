@@ -17,6 +17,6 @@ public class DBackward extends CustomAutonomous
 
         waitForStart();
 
-        bot.setDrivePowerT(bot.AUTO_DRIVE_SPEED, 0.55 * bot.AUTO_DRIVE_SPEED, 1250);
+        bot.setDrivePowerT(bot.AUTO_DRIVE_SPEED, bot.AUTO_DRIVE_SPEED, 1250);
     }
 }

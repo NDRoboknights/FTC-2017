@@ -11,7 +11,7 @@ import org.firstinspires.ftc.team4348.utils.Direction;
 public class WorkingTeleOp extends CustomTeleOp
 {
     WorkingBot bot = new WorkingBot();
-    double multiR = 0.625;
+    double multiR = 1.0;
     double multiL = 1.0;
     double dVal = 0.025;
 
