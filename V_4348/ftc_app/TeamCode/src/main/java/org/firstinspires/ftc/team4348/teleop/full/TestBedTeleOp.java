@@ -38,17 +38,5 @@ public class TestBedTeleOp extends CustomTeleOp
         else {
             bot.rightMotor.setPower(0);
         }
-
-
-        //middle
-        if(gamepad1.dpad_left) {
-            bot.middleMotor.setPower(-1);
-        }
-        else if(gamepad1.dpad_right) {
-            bot.middleMotor.setPower(1);
-        }
-        else {
-            bot.middleMotor.setPower(0);
-        }
     }
 }
