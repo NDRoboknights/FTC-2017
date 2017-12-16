@@ -12,7 +12,8 @@ import static org.firstinspires.ftc.team4348.utils.Utilities.delay;
 
 public class CryptoBox
 {
-    public static void blueRun(WorkingBot bot, RelicRecoveryVuMark vuMark) throws InterruptedException {
+    public static void blueRun(WorkingBot bot, RelicRecoveryVuMark vuMark) throws InterruptedException
+    {
         //For blue, we go from left to right
 
         //find target count
