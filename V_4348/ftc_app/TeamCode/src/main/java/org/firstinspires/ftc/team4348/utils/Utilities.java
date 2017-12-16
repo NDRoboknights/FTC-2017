@@ -41,7 +41,7 @@ public class Utilities
     }
 
     /**
-     * If any power is over MAX (1.0), will divide through by the max power. Else, returns original
+     * If any power is over by the MAX (1.0), will divide through by the max power. Else, returns original
      * powers.
      * @param doubles All powers to scale with each other
      * @return An array of the new powers corresponding in order with original powers
@@ -68,6 +68,10 @@ public class Utilities
         return doubles;
     }
 
+    /**
+     * For every motor in <code>motors</code>, stops and resets encoder values
+     * @param motors motors to reset encoder values
+     */
     public static void resetEncoderValues(DcMotor... motors)
     {
         for(DcMotor m : motors)
