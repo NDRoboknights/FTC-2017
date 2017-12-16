@@ -31,7 +31,6 @@ public class WorkingBot extends Bot
     public DcMotor intakeMotors;
 
     public DcMotor upDownMotor1;
-    public DcMotor upDownMotor2;
 
     public final double AUTO_DRIVE_SPEED = 0.7;
     public final double AUTO_MEDIUM_SPEED = 0.5;
@@ -54,15 +53,12 @@ public class WorkingBot extends Bot
         intakeMotors = hMap.dcMotor.get(HardwareName.INTAKE_MOTOR_ONE.name);
 
         upDownMotor1 = hMap.dcMotor.get(HardwareName.UP_MOTOR_ONE.name);
-        upDownMotor2 = hMap.dcMotor.get(HardwareName.UP_MOTOR_TWO.name);
-        upDownMotor2.setDirection(DcMotor.Direction.REVERSE);
 
         leftMotors.add(leftMotor);
         rightMotors.add(rightMotor);
 //        otherMotors.add(middleMotor);
         otherMotors.add(intakeMotors);
         otherMotors.add(upDownMotor1);
-        otherMotors.add(upDownMotor2);
 
         //servos
         jewelServo = hMap.servo.get(HardwareName.JEWEL_SERVO.name);
@@ -89,6 +85,5 @@ public class WorkingBot extends Bot
     public void runUpMotors(double power)
     {
         upDownMotor1.setPower(power);
-        upDownMotor2.setPower(power);
     }
 }
