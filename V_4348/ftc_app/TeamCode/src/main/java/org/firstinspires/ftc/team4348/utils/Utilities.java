@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.team4348.utils;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
+
 /**
  * Useful functions including <code>delay(...)</code> and <code>scalePower(...)</code>
  */
@@ -64,5 +66,14 @@ public class Utilities
         }
 
         return doubles;
+    }
+
+    public static void resetEncoderValues(DcMotor... motors)
+    {
+        for(DcMotor m : motors)
+        {
+            m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            m.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
     }
 }
