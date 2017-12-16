@@ -45,6 +45,8 @@ public class WorkingBot extends Bot
         //drive motors
         leftMotor = hMap.dcMotor.get(HardwareName.LEFT_MOTOR_ONE.name);
         rightMotor = hMap.dcMotor.get(HardwareName.RIGHT_MOTOR_ONE.name);
+        leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        middleMotor = hMap.dcMotor.get(HardwareName.MIDDLE_MOTOR_ONE.name);
 
         //other motors
