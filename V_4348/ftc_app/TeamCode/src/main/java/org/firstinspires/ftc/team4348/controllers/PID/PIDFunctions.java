@@ -18,6 +18,11 @@ public class PIDFunctions
         this.pidController = pidController;
     }
 
+    /**
+     * Go directly straight until <code>statusChecker.checkStatus()</code> returns false
+     * @param power Power to go straight
+     * @param statusChecker
+     */
     public void straight(double power, StatusChecker statusChecker)
     {
         pidController.setTarget(pidController.getValue());
@@ -50,6 +55,10 @@ public class PIDFunctions
         pidController.stop();
     }
 
+    /**
+     * @param angle The angle to go to, whether turning left or right
+     * @param statusChecker Used as a timeout
+     */
     public void goToAngle(double angle, StatusChecker statusChecker)
     {
         pidController.setTarget(angle);
@@ -82,6 +91,11 @@ public class PIDFunctions
         pidController.stop();
     }
 
+    /**
+     * @param dir The direction to turn (LEFT or RIGHT)
+     * @param angle The angle to turn to
+     * @param sChecker Used as a timeout
+     */
     public void turn(Direction dir, double angle, StatusChecker sChecker)
     {
         pidController.setTarget(pidController.pidInput.normalizeValue(pidController.pidInput.getValue() + dir.v * angle));
@@ -98,6 +112,9 @@ public class PIDFunctions
         pidController.stop();
     }
 
+    /**
+     * The straight thread used to go straight while also doing other things.
+     */
     public static class PIDStraightThread
     {
         PIDFunctions func;
