@@ -34,9 +34,18 @@ public class TestBedTeleOp extends CustomTeleOp
         double lSpeed = Math.abs(dLPos/dTime);
         double rSpeed = Math.abs(dRPos/dTime);
 
+        double multiR = 1;
+        double multiL = 1;
+        if(lSpeed > rSpeed) {
+            multiL = rSpeed/lSpeed;
+        }
+        if(rSpeed > lSpeed) {
+            multiR = lSpeed/rSpeed;
+        }
+
         //joysticks
-        double leftPower = gamepad1.left_stick_y;
-        double rightPower = gamepad1.right_stick_y;
+        double leftPower = gamepad1.left_stick_y * multiL;
+        double rightPower = gamepad1.right_stick_y * multiR;
 
         //drive motors
         //left

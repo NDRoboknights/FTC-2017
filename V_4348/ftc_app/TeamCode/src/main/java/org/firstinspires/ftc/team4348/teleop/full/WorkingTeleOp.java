@@ -11,9 +11,10 @@ import org.firstinspires.ftc.team4348.utils.Direction;
 public class WorkingTeleOp extends CustomTeleOp
 {
     WorkingBot bot = new WorkingBot();
-    double multiR = 1.0;
-    double multiL = 1.0;
-    double dVal = 0.025;
+    long prevTime = 0;
+    int lPrevPos = 0;
+    int rPrevPos = 0;
+    double maxSpeed = 0.9;
 
     boolean butPress = false;
 
@@ -27,9 +28,30 @@ public class WorkingTeleOp extends CustomTeleOp
     @Override
     public void loop()
     {
+        long currTime = System.nanoTime();
+        int lPos = bot.leftMotor.getCurrentPosition();
+        int rPos = bot.rightMotor.getCurrentPosition();
+
+        double dTime = (currTime - prevTime) * 10E-9;
+        double dLPos = lPos - lPrevPos;
+        double dRPos = rPos - rPrevPos;
+
+        double lSpeed = Math.abs(dLPos/dTime);
+        double rSpeed = Math.abs(dRPos/dTime);
+
+        double multiR = 1;
+        double multiL = 1;
+
+        if(lSpeed > rSpeed && rSpeed > JOYSTICK_THRESHOLD) {
+            multiL = rSpeed/lSpeed;
+        }
+        if(rSpeed > lSpeed && lSpeed > JOYSTICK_THRESHOLD) {
+            multiR = lSpeed/rSpeed;
+        }
+
         //joysticks
-        double lPower = multiL * gamepad1.left_stick_y;
-        double rPower = multiR * gamepad1.right_stick_y;
+        double lPower = -multiL * gamepad1.left_stick_y * maxSpeed;
+        double rPower = -multiR * gamepad1.right_stick_y * maxSpeed;
 
         //drive motors
         //left
@@ -50,17 +72,6 @@ public class WorkingTeleOp extends CustomTeleOp
             bot.rightMotor.setPower(0);
         }
 
-        //middle
-//        if(gamepad1.dpad_right) {
-//            bot.middleMotor.setPower(Direction.RIGHT.v);
-//        }
-//        else if(gamepad1.dpad_left) {
-//            bot.middleMotor.setPower(Direction.LEFT.v);
-//        }
-//        else {
-//            bot.middleMotor.setPower(0);
-//        }
-
 
         //intakes
         if(gamepad1.right_trigger >= 0.5) {
@@ -72,7 +83,6 @@ public class WorkingTeleOp extends CustomTeleOp
         else {
             bot.runIntakeMotors(0);
         }
-
 
         //up down of intake
         if(gamepad1.right_bumper) {
@@ -86,28 +96,13 @@ public class WorkingTeleOp extends CustomTeleOp
         }
 
 
-        //scaling drive motor powers
-        if(gamepad1.x && !butPress) {
-            if(gamepad1.dpad_up) {
-                multiL += dVal;
-            }
-            else if(gamepad1.dpad_down) {
-                multiL -= dVal;
-            }
-        }
-        else if(gamepad1.b && butPress) {
-            if(gamepad1.dpad_up) {
-                multiR += dVal;
-            }
-            else if(gamepad1.dpad_down) {
-                multiR -= dVal;
-            }
-        }
+        telemetry.addData("MultiL: ", multiL);
+        telemetry.addData("MultiR: ", multiR);
 
-        butPress = gamepad1.x || gamepad1.b;
-
-        telemetry.addData("LMulti: ", multiL);
-        telemetry.addData("RMulti: ", multiR);
         telemetry.update();
+
+        prevTime = currTime;
+        lPrevPos = lPos;
+        rPrevPos = rPos;
     }
 }
