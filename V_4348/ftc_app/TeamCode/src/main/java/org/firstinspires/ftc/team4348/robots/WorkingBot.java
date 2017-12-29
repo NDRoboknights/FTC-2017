@@ -76,7 +76,7 @@ public class WorkingBot extends Bot
 //        cSensor2 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR2.name);
 //        cSensor2.setI2cAddress((I2cAddr.create8bit(0x4c)));
 
-//        startingAngle = imu.getValue();
+        startingAngle = imu.getValue();
 
         cSensor1.enableLed(true);
     }
