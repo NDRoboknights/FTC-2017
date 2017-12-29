@@ -67,7 +67,7 @@ public class WorkingBot extends Bot
         jewelServo.setPosition(JEWEL_INIT_POS);
 
         //sensors
-//        imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
+        imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
         pidFunctions = new PIDFunctions(this, pidController = new PIDController(this.imu, PIDC));
 
         cSensor1 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR1.name);
