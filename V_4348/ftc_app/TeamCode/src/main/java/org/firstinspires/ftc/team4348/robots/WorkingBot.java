@@ -26,7 +26,7 @@ public class WorkingBot extends Bot
     public ColorSensor cSensor2;
 
     public Servo jewelServo;
-    public final double JEWEL_INIT_POS = 0.0;
+    public final double JEWEL_INIT_POS = 0.6;
 
     public DcMotor intakeMotors;
 
@@ -67,8 +67,8 @@ public class WorkingBot extends Bot
         jewelServo.setPosition(JEWEL_INIT_POS);
 
         //sensors
-        imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
-        pidFunctions = new PIDFunctions(this, pidController = new PIDController(this.imu, PIDC));
+//        imu = new ADAFruitIMU(hMap, HardwareName.ADAFRUIT_IMU.name);
+//        pidFunctions = new PIDFunctions(this, pidController = new PIDController(this.imu, PIDC));
 
         cSensor1 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR1.name);
         cSensor1.setI2cAddress(I2cAddr.create8bit(0x4c));
@@ -76,7 +76,7 @@ public class WorkingBot extends Bot
 //        cSensor2 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR2.name);
 //        cSensor2.setI2cAddress((I2cAddr.create8bit(0x4c)));
 
-        startingAngle = imu.getValue();
+//        startingAngle = imu.getValue();
 
         cSensor1.enableLed(true);
     }

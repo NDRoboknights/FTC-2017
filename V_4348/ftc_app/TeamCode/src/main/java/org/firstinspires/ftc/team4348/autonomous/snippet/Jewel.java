@@ -13,7 +13,7 @@ public class Jewel
     public static Direction blueRun(WorkingBot bot, long timeout)
     {
         //drop jewel servo arm
-        bot.jewelServo.setPosition(0.5);
+        //bot.jewelServo.setPosition(0.0);
 
         //read color sensor and choose direction
         Direction dir = null;
@@ -24,16 +24,16 @@ public class Jewel
             //RGBA.red returns [0,255]
             //if above threshold, choose that direction
             if (bot.cSensor1.blue() >= CustomAutonomous.COLOR_THRESHOLD) {
-                dir = Direction.FORWARD;
+                dir = Direction.BACKWARD;
             }
             //not an else statement to make sure we have a reading
             else if (bot.cSensor1.red() >= CustomAutonomous.COLOR_THRESHOLD) {
-                dir = Direction.BACKWARD;
+                dir = Direction.FORWARD;
             }
         }
 
         if(dir != null) {
-            bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 200);
+            bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 350);
             delay(50);
         }
 
@@ -45,7 +45,7 @@ public class Jewel
     public static Direction redRun(WorkingBot bot, long timeout)
     {
         //drop jewel servo arm
-        bot.jewelServo.setPosition(0.5);
+        //bot.jewelServo.setPosition(0.0);
 
         //read color sensor and choose direction
         Direction dir = null;
@@ -56,16 +56,16 @@ public class Jewel
             //RGBA.red returns [0,255]
             //if above threshold, choose that direction
             if (bot.cSensor1.red() >= CustomAutonomous.COLOR_THRESHOLD) {
-                dir = Direction.FORWARD;
+                dir = Direction.BACKWARD;
             }
             //not an else statement to make sure we have a reading
             else if (bot.cSensor1.blue() >= CustomAutonomous.COLOR_THRESHOLD) {
-                dir = Direction.BACKWARD;
+                dir = Direction.FORWARD;
             }
         }
 
         if(dir != null) {
-            bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 200);
+            bot.setDrivePowerT(dir.v * bot.AUTO_DRIVE_SPEED, dir.v * bot.AUTO_DRIVE_SPEED, 350);
             delay(50);
         }
 

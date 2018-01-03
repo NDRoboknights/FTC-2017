@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class ServoBot extends Bot
 {
     public Servo jewelServo;
-    public final double JEWEL_INIT_POS = 0.5;
+    public final double JEWEL_INIT_POS = 0.6;
 
     @Override
     public void init(HardwareMap hMap)

@@ -5,5 +5,5 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 public abstract class CustomAutonomous extends LinearOpMode
 {
-    public static final int COLOR_THRESHOLD = 1;
+    public static final int COLOR_THRESHOLD = 2;
 }

@@ -15,13 +15,13 @@ public class ColorTest extends CustomTeleOp
     public void init() {
         bot.init(hardwareMap);
         bot.cSensor1.enableLed(true);
-        bot.cSensor2.enableLed(true);
+        //bot.cSensor2.enableLed(true);
     }
 
     @Override
     public void loop() {
         telemetry.addData("Red: ", bot.cSensor1.red());
-        telemetry.addData("Blue: ", bot.cSensor2.blue());
+        telemetry.addData("Blue: ", bot.cSensor1.blue());
         telemetry.addData("Green: ", bot.cSensor1.green());
         telemetry.update();
     }

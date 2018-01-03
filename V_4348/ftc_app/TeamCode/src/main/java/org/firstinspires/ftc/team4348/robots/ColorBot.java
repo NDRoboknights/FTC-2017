@@ -15,9 +15,9 @@ public class ColorBot extends Bot
     {
         this.hardwareMap = hMap;
         cSensor1 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR1.name);
-        cSensor1.setI2cAddress(I2cAddr.create8bit(0x3c));
+        cSensor1.setI2cAddress(I2cAddr.create8bit(0x4c));
 
-        cSensor2 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR2.name);
-        cSensor2.setI2cAddress((I2cAddr.create8bit(0x4c)));
+        //cSensor2 = hMap.colorSensor.get(HardwareName.COLOR_SENSOR2.name);
+        //cSensor2.setI2cAddress((I2cAddr.create8bit(0x4c)));
     }
 }
